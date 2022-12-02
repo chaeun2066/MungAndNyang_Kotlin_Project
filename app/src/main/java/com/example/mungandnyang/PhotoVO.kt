@@ -1,4 +1,4 @@
-package com.example.mungnyang
+package com.example.mungandnyang
 
 data class PhotoVO(
     var ani_number: String = "",

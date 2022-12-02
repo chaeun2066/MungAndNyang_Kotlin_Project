@@ -3,8 +3,8 @@ package com.example.mungandnyang.animalData
 data class Row(
     val ADP_STTUS: String,
     val AGE: String,
-    val ANIMAL_NO: Double,
-    val BDWGH: Double,
+    val ANIMAL_NO: String,
+    val BDWGH: String,
     val BREEDS: String,
     val ENTRNC_DATE: String,
     val INTRCN_CN: String,
