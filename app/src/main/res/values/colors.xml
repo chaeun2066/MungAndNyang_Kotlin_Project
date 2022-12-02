@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="iphone_orange">#FFEE7762</color>
+    <color name="hjm_white">#FFF3F3F3</color>
+    <color name="hjm_gray">#FF808080</color>
+    <color name="hjm_black">#2B2B2B</color>
+    <color name="iphone_red">#A5282C</color>
+    <color name="iphone_blue">#5EB0E5</color>
+    <color name="iphone_rose_gold">#E6C7C2</color>
+    <color name="iphone_space_gray">#535150</color>
+    <color name="first_orange">#FFB951</color>
+    <color name="second_pink">#FFA37D</color>
+    <color name="third_pink">#FF69AA</color>
+    <color name="third_orange">#FF6B25</color>
 </resources>
