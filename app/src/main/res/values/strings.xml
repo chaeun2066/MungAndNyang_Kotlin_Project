@@ -1,3 +1,38 @@
 <resources>
-    <string name="app_name">MungAndNyang</string>
+    <string name="app_name">MungNyang</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adopt_first">1. 입양 전 확인</string>
+    <string name="adopt_first_content1">서울동물복지지원센터 홈페이지와 멍_냥에서 입양대기 동물들을 확인합니다.</string>
+    <string name="adopt_first_content2">입양대기동물의 다양한 사진과 영상은 서울동물복지지원센터 유튜브에서도 보실 수 있어요.</string>
+
+    <string name="adopt_second">2. 입양 전 교육</string>
+    <string name="adopt_second_content1">입양을 희망하시는 분은 서울시 평생학습포털의 "반려동물 입양교육"을 이수해주세요.</string>
+
+    <string name="adopt_third">3. 입양상담예약</string>
+    <string name="adopt_third_content1">방문 전 유선으로 일정예약을 해주시고 센터로 방문해주세요.</string>
+
+    <string name="adopt_fourth">4. 입양 진행</string>
+    <string name="adopt_fourth_content1">입양은 1~2회 입양상담 및 개체만남을 통해 진행됩니다.</string>
+    <string name="adopt_fourth_content2">(입양 후 파양은 불가합니다. 만남을 통해 신중하게 결정해주세요.</string>
+
+    <string name="adopt_fifth">5. 입양 후기 공유</string>
+    <string name="adopt_fifth_content1">보호자님과 입양된 반려견, 반려묘의 행복한 일상을 네이버카페와 멍_냥에서 주기적으로 올려주세요.</string>
+    <string name="adopt_fifth_content2">입양 대기 중인 아이들의 입양과 인식 개선에 많은 도움이 됩니다.</string>
+
+    <string name="guri_adress">서울특별시 구로구 경인로 472(구로동), (전 서울반려동물교육센터)</string>
+    <string name="guri_tranceport">1호선 구일역 1번출구</string>
+    <string name="guri_tranceport2">- 1번출구 왼쪽 뒷길(철교 아래길)로 도보이동 (약 7분 소요)</string>
+    <string name="guri_car">주차장 없음</string>
+    <string name="guri_car2">* 대중교통 이용 바랍니다.</string>
+    <string name="guri_phone">02-2636-7645</string>
+
+    <string name="mapo_adress">서울특별시 마포구 매봉산로 31 에스플렉스 지하 1층</string>
+    <string name="mapo_tranceport">6호선 디지털미디어시티역 2번출구</string>
+    <string name="mapo_tranceport2">- 도보 약 20분 소요</string>
+    <string name="mapo_tranceport3">- 2번 출구 건너편에서 버스(마포18, 7016, 730) →
+에스플렉스센터 정류장 하차(약 5분 소요)</string>
+    <string name="mapo_car">지하주차장 있음(시간당 3,000원)</string>
+    <string name="mapo_car2">* 주차요금이 지원되지 않습니다.</string>
+    <string name="mapo_phone">02-2124-2839</string>
 </resources>
