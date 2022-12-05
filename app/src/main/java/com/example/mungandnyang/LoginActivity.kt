@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding : ActivityLoginBinding
@@ -34,13 +37,31 @@ class LoginActivity : AppCompatActivity() {
 
         //버튼 로그인 이벤트
         binding.btnLALogin.setOnClickListener {
+            val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{10,15}$")
+            val emailRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
+            var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             val email = binding.edtLAEmail.text.toString()
             val password = binding.edtLAPassword.text.toString()
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-
-//            login(email, password)
+            if (email.isEmpty()) {
+                binding.edtLAEmail.requestFocus()
+                manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "이메일을 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else if (password.isEmpty() ) {
+                binding.edtLAPassword.requestFocus()
+                manager.showSoftInput(binding.edtLAPassword, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
+            }else if(!emailRegex.matcher(email).matches()){
+                binding.edtLAEmail.requestFocus()
+                manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "올바르지 않은 이메일 형식입니다.", Toast.LENGTH_SHORT).show()
+//            }else if(!passwordRegex.matcher(password).matches()){
+//                binding.edtLAEmail.requestFocus()
+//                manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
+//                Toast.makeText(this, "잘못된 비밀번호입니다.", Toast.LENGTH_SHORT).show()
+            }else{
+                login(email, password)
+            }
         }
     }
 
@@ -51,12 +72,13 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Toast.makeText(this, "로그인을 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "멍앤냥에 오신걸 환영합니다!", Toast.LENGTH_SHORT).show()
                     finish()
-                } else {
-                    Toast.makeText(this, "로그인을 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(this, "이메일 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
                     Log.d("mungnyang", "Error: ${task.exception}")
                 }
+
             }
     }
 }
