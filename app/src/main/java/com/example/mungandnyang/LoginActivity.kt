@@ -25,9 +25,6 @@ class LoginActivity : AppCompatActivity() {
         //인증 초기화
         userAuth = Firebase.auth
 
-        //로그인 로고
-        Glide.with(this).load(R.raw.mungnyang).override(700,700).into(binding.ivLAMung)
-
         //텍스트 회원가입 이벤트
         binding.tvLARegister.setOnClickListener{
             val intent = Intent(this, RegisterActivity::class.java)

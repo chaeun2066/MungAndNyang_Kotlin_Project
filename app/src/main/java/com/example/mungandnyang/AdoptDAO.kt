@@ -37,4 +37,8 @@ class AdoptDAO {
     fun selectReview(): Query? {
         return reviewDbReference
     }
+
+    fun deleteReview(key: String): Task<Void>{
+        return reviewDbReference!!.child(key).removeValue()
+    }
 }
