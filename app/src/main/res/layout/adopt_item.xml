@@ -94,6 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="5dp"
                 android:text="보호 동물 소개"
                 android:textColor="@color/iphone_orange"
@@ -274,6 +275,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="30dp"
                         android:gravity="center"
                         android:orientation="horizontal">
 
