@@ -8,6 +8,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -15,10 +16,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mungandnyang.databinding.FragmentReviewBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.NonDisposableHandle.parent
 
 class ReviewFragment : Fragment() {
     lateinit var binding: FragmentReviewBinding
@@ -105,11 +108,12 @@ class ReviewFragment : Fragment() {
         binding.cafeRecyclerView.setHasFixedSize(true)
         binding.cafeRecyclerView.adapter = reviewAdapter
 
+        uploadList = mutableListOf()
         uploadAdapter = UploadAdapter(binding.root.context, uploadList)
         binding.userRecyclerView.layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
         binding.userRecyclerView.setHasFixedSize(true)
         binding.userRecyclerView.adapter = uploadAdapter
-//        getUploadList()
+        getUploadList()
 
         binding.fab.setOnClickListener {
             var isOpened: Boolean = true
@@ -137,26 +141,29 @@ class ReviewFragment : Fragment() {
         return binding.root
     }
 
-//    private fun getUploadList() {
-//        val adoptDAO = AdoptDAO()
-//        adoptDAO.selectReview()?.addValueEventListener(object: ValueEventListener {
-//            //값이 변경이 되면 이함수가 다시 실행됨
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                uploadList.clear()
-//                for(dataSnapshot in snapshot.children){
-//                    val uploadData = dataSnapshot.getValue(UploadVO::class.java)
-//                    if(uploadData != null){
-//                        uploadList.add(uploadData)
-//                    }
-//                }//end of for
-//                uploadAdapter.notifyDataSetChanged()
-//                Log.d("mungandnyang", "onDataChange" )
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Toast.makeText(binding.root.context, "storage image 가져오기 실패 ${error.toString()} ", Toast.LENGTH_SHORT).show()
-//            }
-//
-//        })
-//    }
+
+
+    private fun getUploadList() {
+        val adoptDAO = AdoptDAO()
+        adoptDAO.selectReview()?.addValueEventListener(object: ValueEventListener {
+            //값이 변경이 되면 이함수가 다시 실행됨
+            override fun onDataChange(snapshot: DataSnapshot) {
+                uploadList.clear()
+                for(dataSnapshot in snapshot.children){
+                    var uploadData = dataSnapshot.getValue(UploadVO::class.java)
+                    uploadData?.docId = dataSnapshot.key.toString()
+                    if(uploadData != null){
+                        uploadList.add(uploadData)
+                    }
+                }//end of for
+                uploadAdapter.notifyDataSetChanged()
+                Log.d("mungandnyang", "onDataChange" )
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(binding.root.context, "storage image 가져오기 실패 ${error.toString()} ", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
 }
