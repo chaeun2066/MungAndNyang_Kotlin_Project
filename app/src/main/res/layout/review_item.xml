@@ -5,7 +5,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/orange_background"
     android:padding="5dp">
 
     <LinearLayout
@@ -37,23 +36,27 @@
                 app:srcCompat="@drawable/hashtag" />
 
             <TextView
-                android:id="@+id/tv_rev_name"
+                android:id="@+id/tv_rev_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:gravity="center"
-                android:hint="이름"
+                android:hint="TITLE"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:ellipsize="marquee"
                 android:textSize="20sp" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_rev_id"
+            android:id="@+id/tv_rev_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:hint="ID"
-            android:textSize="10sp" />
+            android:hint="DATE"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
