@@ -25,7 +25,6 @@ class AnimaldetailActivity : AppCompatActivity() {
 
         animalDatabase = Firebase.database.reference
 
-
         if(intent.hasExtra("number") && intent.hasExtra("name") && intent.hasExtra("gender")
             && intent.hasExtra("breed") && intent.hasExtra("weight") && intent.hasExtra("age")
             && intent.hasExtra("date")){
