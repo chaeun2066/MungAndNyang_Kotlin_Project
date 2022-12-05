@@ -40,27 +40,17 @@ class AdoptlistFragment : Fragment() {
     ): View? {
         binding = FragmentAdoptlistBinding.inflate(inflater, container, false)
         mainContainer = container
-
         adoptDatabase = Firebase.database.reference
-
         adoptList = mutableListOf()
-
-//        adapter = AdoptAdapter(binding.root.context, adoptList)
-//
-//        binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
-//        binding.recyclerView.setHasFixedSize(true)
-//        binding.recyclerView.adapter = adapter
 
         val retrofit = Retrofit.Builder()
             .baseUrl(AdoptOpenApi.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         val retrofit2 = Retrofit.Builder()
             .baseUrl(PhotoOpenApi.DOMAIN)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
         val service = retrofit.create(AdoptOpenService::class.java)
         val service2 = retrofit2.create(PhotoOpenService::class.java)
 
@@ -80,9 +70,7 @@ class AdoptlistFragment : Fragment() {
                             var weight = adopt.BDWGH
                             var breed = adopt.BREEDS
                             var date = adopt.ENTRNC_DATE
-
                             val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date)
-
                             adoptList.add(animalVO)
                             adoptDAO.insertAnimal(animalVO)?.addOnSuccessListener {
                                 Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")
@@ -91,31 +79,13 @@ class AdoptlistFragment : Fragment() {
                             }
                         }
                         adapter = AdoptAdapter(binding.root.context, adoptList)
-
                         binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
                         binding.recyclerView.setHasFixedSize(true)
                         binding.recyclerView.adapter = adapter
-
-//                        adoptDatabase.child("AdoptList").addValueEventListener(object:
-//                            ValueEventListener {
-//                            override fun onDataChange(snapshot: DataSnapshot) {
-//                                adoptList.clear()
-//                                for(postSnapshot in snapshot.children){
-//                                    val currentAnimal = postSnapshot.getValue(AnimalVO::class.java)
-//                                    adoptList.add(currentAnimal!!)
-//                                }
-//                                adapter.notifyDataSetChanged()
-//                            }
-//
-//                            override fun onCancelled(error: DatabaseError) {
-//
-//                            }
-//                        })
                     }?: let{
                         Log.d("com.example.mungnyang", "No Data")
                     }
                 }
-
                 override fun onFailure(call: Call<AdoptAnimal>, t: Throwable) {
                     TODO("Not yet implemented")
                 }
@@ -128,14 +98,12 @@ class AdoptlistFragment : Fragment() {
                     data?.let {
                         for(animal in it.TbAdpWaitAnimalPhotoView.row){
                             val adoptDAO = AdoptDAO()
-
                             Log.d("com.example.mungnyang", "Data Load Success")
                             val ani_number = animal.ANIMAL_NO
                             val photo_url = animal.PHOTO_URL
                             val photo_kind = animal.PHOTO_KND
                             if(photo_kind.equals("THUMB")) {
                                 val photoVO = PhotoVO(ani_number, photo_url, photo_kind)
-
                                 adoptDAO.insertPhoto(photoVO)?.addOnSuccessListener {
                                     Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 성공")
                                 }?.addOnFailureListener{
@@ -147,7 +115,6 @@ class AdoptlistFragment : Fragment() {
                         Log.d("com.example.mungnyang", "No Data")
                     }
                 }
-
                 override fun onFailure(call: Call<AnimalPhoto>, t: Throwable) {
                     Log.d("com.example.mungnyang", "Data Load Error ${t.toString()}")
                     Toast.makeText(context, "Data Load Error", Toast.LENGTH_SHORT).show()
@@ -155,5 +122,4 @@ class AdoptlistFragment : Fragment() {
             })
         return binding.root
     }
-
 }
