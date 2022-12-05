@@ -12,7 +12,7 @@
         android:id="@+id/iv_revup_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_weight="1"
         app:srcCompat="@drawable/pet_icon" />
 
     <ScrollView
@@ -29,7 +29,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -44,10 +43,11 @@
                         android:layout_height="wrap_content"
                         android:text="이름 : " />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/tv_revup_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textSize="12sp"
                         android:hint="이름" />
 
                 </LinearLayout>
@@ -74,10 +74,11 @@
                     android:layout_marginBottom="10dp"
                     android:text="종 : " />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_revup_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"
                     android:hint="종" />
 
             </LinearLayout>
@@ -99,6 +100,7 @@
                     android:id="@+id/tv_revup_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="12sp"
                     android:hint="DATE" />
 
             </LinearLayout>
@@ -114,11 +116,12 @@
                     android:layout_height="wrap_content"
                     android:text="내용" />
 
-                <TextView
+                <EditText
                     android:id="@+id/tv_revup_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
+                    android:textSize="12sp"
                     android:hint="내용" />
 
             </LinearLayout>
