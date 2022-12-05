@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.telephony.PhoneNumberFormattingTextWatcher
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ActivityRegisterBinding
@@ -12,6 +13,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.util.regex.Pattern
 
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding : ActivityRegisterBinding
@@ -44,14 +46,36 @@ class RegisterActivity : AppCompatActivity() {
 
         //버튼 회원가입 이벤트
         binding.btnRARegister.setOnClickListener {
+            var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{10,15}$")
+            val emailRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
+            val phoneRegex = Pattern.compile("^(?=.*[0-9])(?=.*[-])[[0-9]-]{13,}$")
             val name = binding.edtRAName.text.toString().trim()
             val email = binding.edtRAEmail.text.toString().trim()
             val password = binding.edtRAPassword.text.toString().trim()
             val phone = binding.edtRAPhone.text.toString().trim()
 
-            register(name, email, password, phone)
+            if (email.isEmpty() || !emailRegex.matcher(email).matches()){
+                binding.edtRAPhone.requestFocus()
+                manager.showSoftInput(binding.edtRAPhone, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "올바른 이메일 형식으로 입력해주세요.", Toast.LENGTH_SHORT).show()
+            } else if (password.isEmpty() || !passwordRegex.matcher(password).matches()){
+                binding.edtRAPhone.requestFocus()
+                manager.showSoftInput(binding.edtRAPhone, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "영문,숫자,특수문자를 조합하여 10~15자로 입력해주세요", Toast.LENGTH_LONG).show()
+            } else if (name.isEmpty()) {
+                binding.edtRAPhone.requestFocus()
+                manager.showSoftInput(binding.edtRAPhone, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else if (phone.isEmpty() || !phoneRegex.matcher(password).matches()) {
+                binding.edtRAPassword.text.clear()
+                binding.edtRAPassword.requestFocus()
+                manager.showSoftInput(binding.edtRAPassword, InputMethodManager.SHOW_IMPLICIT)
+                Toast.makeText(this, "연락처를 정확히 입력해주세요", Toast.LENGTH_SHORT).show()
+            } else {
+                register(name, email, password, phone)
+            }
         }
-
     }
 
     //회원가입 기능
@@ -59,13 +83,13 @@ class RegisterActivity : AppCompatActivity() {
         userAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(this, "회원가입이 성공적으로 되었습니다.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "멍앤냥의 멤버가 되신 걸 축하해요!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this,MainActivity::class.java)
                     startActivity(intent)
-
+                    finish()
                     addUserToDatabase(name, email, phone, userAuth.currentUser?.uid!!)
-                } else {
-                    Toast.makeText(this, "회원가입을 실패하였습니다.", Toast.LENGTH_SHORT).show()
+                }else{
+                    Toast.makeText(this, "회원가입에 실패했어요", Toast.LENGTH_LONG).show()
                 }
             }
     }
