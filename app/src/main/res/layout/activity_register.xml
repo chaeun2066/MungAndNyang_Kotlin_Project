@@ -177,9 +177,9 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:background="@android:color/transparent"
-                android:hint="*********"
-                android:textSize="20sp"
-                android:inputType="textPassword"/>
+                android:hint="영문,숫자,특수기호 조합(10~15자 이내)"
+                android:inputType="textPassword"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <Button
