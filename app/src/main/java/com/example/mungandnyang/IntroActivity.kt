@@ -18,8 +18,8 @@ class IntroActivity : AppCompatActivity() {
             val intent= Intent( this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 9000)
-        Glide.with(this).load(R.raw.dog).override(600,600).into(binding.ivIaDog)
-        Glide.with(this).load(R.raw.mungnyang).override(400,400).into(binding.ivIaMung)
+        }, 7000)
+        Glide.with(this).load(R.raw.happydog).override(700,700).into(binding.ivIaDog)
+        Glide.with(this).load(R.raw.mungandnyang).override(900,900).into(binding.ivIaMung)
     }
 }

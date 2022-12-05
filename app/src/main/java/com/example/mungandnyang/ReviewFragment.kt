@@ -97,29 +97,27 @@ class ReviewFragment : Fragment() {
         binding.recyclerView.adapter = adapter
 
         binding.fab.setOnClickListener {
-            var flag = false
-            if(flag == false){
-                binding.fabChat.visibility = View.VISIBLE
-                binding.fabCam.visibility = View.VISIBLE
-                binding.fab.setImageResource(R.drawable.minus)
-                binding.fabChat.setOnClickListener {
-                    val intent = Intent(binding.root.context, ChatActivity::class.java)
-                    startActivity(intent)
-                }
-                binding.fabCam.setOnClickListener {
-                    val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
-                    startActivity(intent)
-                }
-                flag = true
-            }else {
-                binding.fab.setOnClickListener {
+            var isOpened: Boolean = true
+            binding.fab.setOnClickListener {
+                if(isOpened){
+                    binding.fab.setImageResource(R.drawable.minus)
+                    binding.fabChat.visibility = View.VISIBLE
+                    binding.fabCam.visibility = View.VISIBLE
+                    binding.fabChat.setOnClickListener {
+                        val intent = Intent(binding.root.context, ChatActivity::class.java)
+                        startActivity(intent)
+                    }
+                    binding.fabCam.setOnClickListener {
+                        val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
+                        startActivity(intent)
+                    }
+                }else{
+                    binding.fab.setImageResource(R.drawable.add)
                     binding.fabChat.visibility = View.INVISIBLE
                     binding.fabCam.visibility = View.INVISIBLE
-                    binding.fab.setImageResource(R.drawable.add)
                 }
-                flag = false
+                isOpened = !isOpened
             }
-            return@setOnClickListener
         }
         return binding.root
     }
