@@ -30,8 +30,7 @@ class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>)
         binding.tvRevDate.text = reviewData.date
         Glide.with(context)
             .load("https://cafe.naver.com/common/storyphoto/viewer.html?src=https%3A%2F%2Fcafeptthumb-phinf.pstatic.net%2FMjAyMjA5MDhfMjc0%2FMDAxNjYyNjE0NzIxNTY2.0tjbLn317ChbfqJ-oY2AazlnOSVLU7Kds8TE3M48rF8g.qLnn1UHJ8oyG0lpc-zmI3j3RVHlR3oA4nPTXBUAuFmog.JPEG%2F20220820%25EF%25BC%25BF101630.jpg%3Ftype%3Dw1600")
-            .error(R.drawable.hashtag)
-            .fallback(R.drawable.pet_icon)
+            .centerCrop()
             .into(binding.ivRevPicture)
         Log.d("mungandnyang", "${reviewData.image}")
 
