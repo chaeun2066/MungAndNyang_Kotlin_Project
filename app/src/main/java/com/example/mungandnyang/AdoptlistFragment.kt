@@ -45,11 +45,11 @@ class AdoptlistFragment : Fragment() {
 
         adoptList = mutableListOf()
 
-        adapter = AdoptAdapter(binding.root.context, adoptList)
-
-        binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.adapter = adapter
+//        adapter = AdoptAdapter(binding.root.context, adoptList)
+//
+//        binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
+//        binding.recyclerView.setHasFixedSize(true)
+//        binding.recyclerView.adapter = adapter
 
         val retrofit = Retrofit.Builder()
             .baseUrl(AdoptOpenApi.DOMAIN)
@@ -71,7 +71,6 @@ class AdoptlistFragment : Fragment() {
                     data?.let {
                         for(adopt in it.TbAdpWaitAnimalView.row){
                             val adoptDAO = AdoptDAO()
-
                             Log.d("com.example.mungnyang", "Data Load Success")
                             var number = adopt.ANIMAL_NO
                             var state = adopt.ADP_STTUS
@@ -84,26 +83,34 @@ class AdoptlistFragment : Fragment() {
 
                             val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date)
 
+                            adoptList.add(animalVO)
                             adoptDAO.insertAnimal(animalVO)?.addOnSuccessListener {
                                 Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")
                             }?.addOnFailureListener {
                                 Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 실패")
                             }
                         }
-                        adoptDatabase.child("AdoptList").addValueEventListener(object:
-                            ValueEventListener {
-                            override fun onDataChange(snapshot: DataSnapshot) {
-                                for(postSnapshot in snapshot.children){
-                                    val currentAnimal = postSnapshot.getValue(AnimalVO::class.java)
-                                    adoptList.add(currentAnimal!!)
-                                }
-                                adapter.notifyDataSetChanged()
-                            }
+                        adapter = AdoptAdapter(binding.root.context, adoptList)
 
-                            override fun onCancelled(error: DatabaseError) {
+                        binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
+                        binding.recyclerView.setHasFixedSize(true)
+                        binding.recyclerView.adapter = adapter
 
-                            }
-                        })
+//                        adoptDatabase.child("AdoptList").addValueEventListener(object:
+//                            ValueEventListener {
+//                            override fun onDataChange(snapshot: DataSnapshot) {
+//                                adoptList.clear()
+//                                for(postSnapshot in snapshot.children){
+//                                    val currentAnimal = postSnapshot.getValue(AnimalVO::class.java)
+//                                    adoptList.add(currentAnimal!!)
+//                                }
+//                                adapter.notifyDataSetChanged()
+//                            }
+//
+//                            override fun onCancelled(error: DatabaseError) {
+//
+//                            }
+//                        })
                     }?: let{
                         Log.d("com.example.mungnyang", "No Data")
                     }
