@@ -7,11 +7,13 @@ import com.google.firebase.database.FirebaseDatabase
 class AdoptDAO {
     var animalDbReference: DatabaseReference? = null
     var photoDbReference: DatabaseReference? = null
+    var reviewDbReference: DatabaseReference? = null
 
     init{
         val db: FirebaseDatabase = FirebaseDatabase.getInstance()
         animalDbReference = db.getReference("AdoptList")
         photoDbReference = db.getReference("AdoptPhoto")
+        reviewDbReference = db.getReference("ReviewUpload")
     }
 
     fun insertAnimal(animalVO: AnimalVO?): Task<Void> {
@@ -20,5 +22,9 @@ class AdoptDAO {
 
     fun insertPhoto(photoVO: PhotoVO): Task<Void>{
         return photoDbReference!!.push().setValue(photoVO)
+    }
+
+    fun insertReview(uploadVO: UploadVO): Task<Void>{
+        return reviewDbReference!!.push().setValue(uploadVO)
     }
 }
