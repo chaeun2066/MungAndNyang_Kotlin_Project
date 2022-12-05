@@ -1,6 +1,8 @@
 package com.example.mungandnyang
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -50,6 +52,17 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
             }
         })
 
+        binding.root.setOnClickListener{
+            val intent = Intent(context, AnimaldetailActivity::class.java)
+            intent.putExtra("number",adoptAnimal.number)
+            intent.putExtra("name", adoptAnimal.name)
+            intent.putExtra("gender", adoptAnimal.gender)
+            intent.putExtra("breed", adoptAnimal.breed)
+            intent.putExtra("weight", adoptAnimal.weight)
+            intent.putExtra("age", adoptAnimal.age)
+            intent.putExtra("date", adoptAnimal.date)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {
