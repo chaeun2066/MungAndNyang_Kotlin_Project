@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,6 @@ class ReviewFragment : Fragment() {
     lateinit var binding: FragmentReviewBinding
     lateinit var reviewList: MutableList<ReviewVO>
     lateinit var adapter: ReviewAdapter
-    var imageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,15 +96,6 @@ class ReviewFragment : Fragment() {
         binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.adapter = adapter
 
-        val requestLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-            if(it.resultCode == Activity.RESULT_OK){
-                val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
-                imageUri = it.data?.data
-                intent.putExtra("uploadImage", imageUri)
-                startActivity(intent)
-            }
-        }
-
         binding.fab.setOnClickListener {
             var flag = false
             if(flag == false){
@@ -116,9 +107,8 @@ class ReviewFragment : Fragment() {
                     startActivity(intent)
                 }
                 binding.fabCam.setOnClickListener {
-                    val intent = Intent(Intent.ACTION_PICK)
-                    intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*")
-                    requestLauncher.launch(intent)
+                    val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
+                    startActivity(intent)
                 }
                 flag = true
             }else {
