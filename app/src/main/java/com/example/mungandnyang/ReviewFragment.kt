@@ -29,6 +29,7 @@ class ReviewFragment : Fragment() {
     lateinit var uploadList: MutableList<UploadVO>
     lateinit var reviewAdapter: ReviewAdapter
     lateinit var uploadAdapter: UploadAdapter
+    var isOpened: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -116,27 +117,25 @@ class ReviewFragment : Fragment() {
         getUploadList()
 
         binding.fab.setOnClickListener {
-            var isOpened: Boolean = true
-            binding.fab.setOnClickListener {
-                if(isOpened){
-                    binding.fab.setImageResource(R.drawable.minus)
-                    binding.fabChat.visibility = View.VISIBLE
-                    binding.fabCam.visibility = View.VISIBLE
-                    binding.fabChat.setOnClickListener {
-                        val intent = Intent(binding.root.context, ChatActivity::class.java)
-                        startActivity(intent)
-                    }
-                    binding.fabCam.setOnClickListener {
-                        val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
-                        startActivity(intent)
-                    }
-                }else{
-                    binding.fab.setImageResource(R.drawable.add)
-                    binding.fabChat.visibility = View.INVISIBLE
-                    binding.fabCam.visibility = View.INVISIBLE
+            if(isOpened){
+                binding.fab.setImageResource(R.drawable.minus)
+                binding.fabChat.visibility = View.VISIBLE
+                binding.fabCam.visibility = View.VISIBLE
+                binding.fabChat.setOnClickListener {
+                    val intent = Intent(binding.root.context, ChatActivity::class.java)
+                    startActivity(intent)
                 }
-                isOpened = !isOpened
+                binding.fabCam.setOnClickListener {
+                    val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
+                    startActivity(intent)
+                }
+            }else{
+                binding.fab.setImageResource(R.drawable.add)
+                binding.fabChat.visibility = View.INVISIBLE
+                binding.fabCam.visibility = View.INVISIBLE
             }
+            isOpened = !isOpened
+
         }
         return binding.root
     }
