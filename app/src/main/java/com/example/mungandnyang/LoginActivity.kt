@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         //버튼 로그인 이벤트
         binding.btnLALogin.setOnClickListener {
-            val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{10,15}$")
+            val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{0,15}$")
             val emailRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             val email = binding.edtLAEmail.text.toString()
