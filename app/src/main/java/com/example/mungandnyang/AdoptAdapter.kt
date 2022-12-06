@@ -3,6 +3,7 @@ package com.example.mungandnyang
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -71,15 +72,15 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
             context.startActivity(intent)
         }
 
-        holder.itemView.setOnClickListener {
+        binding.root.setOnClickListener {
             if (selectedItems[position]) {
                 selectedItems.delete(position)
-                binding.infoLayout.visibility = View.GONE
-                binding.detailLayout.visibility = View.VISIBLE
-            } else {
-                selectedItems.put(position, true)
                 binding.infoLayout.visibility = View.VISIBLE
                 binding.detailLayout.visibility = View.GONE
+            } else {
+                selectedItems.put(position, true)
+                binding.infoLayout.visibility = View.GONE
+                binding.detailLayout.visibility = View.VISIBLE
             }
         }
     }
