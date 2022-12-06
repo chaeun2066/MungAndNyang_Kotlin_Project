@@ -113,40 +113,35 @@ class ReviewFragment : Fragment() {
 
         binding.fab.setOnClickListener {
             if(isOpened){
-                binding.reviewBackfround.setBackgroundColor(Color.parseColor("#99FFFFFF"))
-                binding.fab.setImageResource(R.drawable.minus)
-                binding.fabHome.visibility = View.VISIBLE
-                binding.fabCafe.visibility = View.VISIBLE
-                binding.fabCam.visibility = View.VISIBLE
+                floatingOpen()
                 binding.fabHome.setOnClickListener {
+                    isOpened = !isOpened
+                    floatingClose()
                     val intent = Intent()
                     intent.action = Intent.ACTION_VIEW
                     intent.data = Uri.parse("https://animal.seoul.go.kr/index")
                     ContextCompat.startActivity(binding.root.context, intent, null)
                 }
                 binding.fabCafe.setOnClickListener {
+                    isOpened = !isOpened
+                    floatingClose()
                     val intent = Intent()
                     intent.action = Intent.ACTION_VIEW
                     intent.data = Uri.parse("https://cafe.naver.com/seoulanimalcare")
                     ContextCompat.startActivity(binding.root.context, intent, null)
                 }
                 binding.fabCam.setOnClickListener {
+                    isOpened = !isOpened
+                    floatingClose()
                     val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
                     startActivity(intent)
                 }
-                binding.reviewBackfround.setOnClickListener {
-                    binding.reviewBackfround.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-                    binding.fab.setImageResource(R.drawable.add)
-                    binding.fabHome.visibility = View.INVISIBLE
-                    binding.fabCafe.visibility = View.INVISIBLE
-                    binding.fabCam.visibility = View.INVISIBLE
+                binding.reviewBackground.setOnClickListener {
+                    isOpened = !isOpened
+                    floatingClose()
                 }
             }else{
-                binding.reviewBackfround.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-                binding.fab.setImageResource(R.drawable.add)
-                binding.fabHome.visibility = View.INVISIBLE
-                binding.fabCafe.visibility = View.INVISIBLE
-                binding.fabCam.visibility = View.INVISIBLE
+                floatingClose()
             }
             isOpened = !isOpened
         }
@@ -173,5 +168,22 @@ class ReviewFragment : Fragment() {
                 Toast.makeText(binding.root.context, "storage image 가져오기 실패 ${error.toString()} ", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun floatingClose() {
+        binding.reviewBackground.visibility = View.INVISIBLE
+        binding.fab.setImageResource(R.drawable.add)
+        binding.fabHome.visibility = View.INVISIBLE
+        binding.fabCafe.visibility = View.INVISIBLE
+        binding.fabCam.visibility = View.INVISIBLE
+    }
+
+    private fun floatingOpen() {
+        binding.reviewBackground.visibility = View.VISIBLE
+        binding.reviewBackground.setBackgroundColor(Color.parseColor("#99FFFFFF"))
+        binding.fab.setImageResource(R.drawable.minus)
+        binding.fabHome.visibility = View.VISIBLE
+        binding.fabCafe.visibility = View.VISIBLE
+        binding.fabCam.visibility = View.VISIBLE
     }
 }
