@@ -1,6 +1,7 @@
 package com.example.mungandnyang
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,8 +10,8 @@ import com.example.mungandnyang.databinding.ReviewItemBinding
 
 class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>): RecyclerView.Adapter<UploadAdapter.UploadViewHolder>() {
 
-    override fun onBindViewHolder(wifiViewholder: UploadViewHolder, position: Int) {
-        val binding = (wifiViewholder as UploadViewHolder).binding
+    override fun onBindViewHolder(viewholder: UploadViewHolder, position: Int) {
+        val binding = (viewholder as UploadViewHolder).binding
         val uploadData = uploadList.get(position)
 
         binding.tvRevTitle.text = uploadData.name
@@ -23,6 +24,25 @@ class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>)
                 Glide.with(context).load(it.result).into(binding.ivRevPicture)
                 binding.ivRevHashtag.setImageResource(R.drawable.phone)
             }
+        }
+
+        viewholder.itemView.setOnClickListener {
+            val intent = Intent(binding.root.context, DetailInfoActivity::class.java)
+            intent.putExtra("docId", uploadData.docId)
+            intent.putExtra("name", uploadData.name)
+            intent.putExtra("gender", uploadData.gender)
+            intent.putExtra("breed", uploadData.breed)
+            intent.putExtra("date", uploadData.date)
+            intent.putExtra("text", uploadData.text)
+            context.startActivity(intent)
+        }
+
+        viewholder.itemView.setOnLongClickListener {
+            val intent = Intent(binding.root.context, CustomDialogReviewDelete::class.java)
+            val dialog = CustomDialogReviewDelete(binding.root.context, binding)
+            intent.putExtra("docId", uploadData.docId)
+            dialog.showDialog(intent)
+            true
         }
     }
 

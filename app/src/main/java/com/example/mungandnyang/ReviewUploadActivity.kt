@@ -94,7 +94,7 @@ class ReviewUploadActivity : AppCompatActivity() {
                         binding.tvRevupDate.setText("${year}-${month}-${date}")
                     }
                 }
-            }, now().year, now().monthValue, now().dayOfMonth).show()
+            }, now().year, now().month.value, now().dayOfMonth).show()
         }
 
         binding.btnRevupReg.setOnClickListener {
@@ -107,13 +107,6 @@ class ReviewUploadActivity : AppCompatActivity() {
                 val text = binding.tvRevupText.text.toString()
                 val uploadData = UploadVO(docId, name, gender, breed, date, text)
                 val uploadImg = adoptDAO.storage!!.reference.child("images/${uploadData.docId}.jpg")
-                adoptDAO.insertReview(uploadData)?.addOnSuccessListener {
-                    binding.tvRevupName.text.clear()
-                    binding.tvRevupKind.text.clear()
-                    binding.tvRevupText.text.clear()
-                }?.addOnFailureListener {
-                    Toast.makeText(this, "데이터 입력 실패", Toast.LENGTH_SHORT).show()
-                }
                 uploadImg.putFile(imageUri!!)?.addOnSuccessListener{
                     adoptDAO.reviewDbReference?.child(docId!!)?.setValue(uploadData)?.addOnSuccessListener {
                         Log.d("mungandnyang","데이터 전송 성공")
