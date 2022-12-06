@@ -26,7 +26,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="95dp"
+                android:layout_marginLeft="50dp"
                 app:srcCompat="@drawable/leaf" />
 
             <TextView

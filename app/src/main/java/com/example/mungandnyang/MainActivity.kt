@@ -1,17 +1,24 @@
 package com.example.mungandnyang
 
+import android.app.ProgressDialog.show
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mungandnyang.databinding.ActivityMainBinding
 import com.example.mungandnyang.databinding.TabLayoutItemBinding
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle: ActionBarDrawerToggle
@@ -19,10 +26,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var adoptlistFragment: AdoptlistFragment
     lateinit var reviewFragment: ReviewFragment
     var mBackWait:Long = 0
+    lateinit var userAuth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        userAuth = Firebase.auth
 
         //Toolbar 설정
         setSupportActionBar(binding.toolbar)
@@ -42,6 +53,11 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.mainTabLayout, binding.mainViewPager2){ tab, position ->
             tab.setCustomView(createTabView(title[position]))
         }.attach()
+
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_logout_24)
+        supportActionBar?.setDisplayShowTitleEnabled(true)
     }
 
     private fun createTabView(title: String): View {
@@ -65,8 +81,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
+        val eventHandler = object : DialogInterface.OnClickListener{
+            override fun onClick(userDialog: DialogInterface?, p1: Int) {
+                if(p1 == DialogInterface.BUTTON_POSITIVE){
+                    userAuth.signOut()
+                    val intent = Intent(applicationContext, LoginActivity::class.java)
+                    startActivity(intent)
+                    Toast.makeText(applicationContext, "로그아웃 하셨습니다", Toast.LENGTH_SHORT).show()
+
+                }
+            }
+        }
+        when(item.itemId) {
+            android.R.id.home -> {
+                AlertDialog.Builder(this).run {
+                    setTitle("알림")
+                    setIcon(android.R.drawable.ic_dialog_alert)
+                    setMessage("정말 로그아웃 하시겠습니까?")
+                    setPositiveButton("네", eventHandler)
+                    setNegativeButton("아니오", eventHandler)
+                    show()
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }

@@ -98,6 +98,7 @@
         <activity
             android:name=".ReviewUploadActivity"
             android:exported="false"
+            android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.app.lib_name"
