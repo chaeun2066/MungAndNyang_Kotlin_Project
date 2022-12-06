@@ -16,20 +16,27 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#F8F0E5"
             android:theme="@style/ThemeOverlay.Material3.NavigationView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="#F8F0E5">
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="95dp"
+                app:srcCompat="@drawable/leaf" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mung \u0026 Nyang"
                 android:layout_gravity="center"
-                android:textStyle="italic"
+                android:text="Mung \u0026 Nyang"
+                android:textColor="#97733F"
                 android:textSize="25sp"
-                android:textColor="#97733F"/>
+                android:textStyle="italic" />
         </androidx.appcompat.widget.Toolbar>
 
         <com.google.android.material.tabs.TabLayout
@@ -45,6 +52,8 @@
             android:id="@+id/main_view_pager2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+
 
     </LinearLayout>
 
