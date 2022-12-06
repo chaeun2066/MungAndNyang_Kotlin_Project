@@ -115,14 +115,20 @@
             android:exported="true"
             android:launchMode="singleTask">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e1cc947173d1aa4dfcbcdcfb8b1bb54100286211
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+<<<<<<< HEAD
 =======
 
 >>>>>>> 589a079fafe478d68b366a4012da241d476c7962
+=======
+>>>>>>> e1cc947173d1aa4dfcbcdcfb8b1bb54100286211
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

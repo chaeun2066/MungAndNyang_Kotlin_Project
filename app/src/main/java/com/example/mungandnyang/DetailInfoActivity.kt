@@ -2,7 +2,6 @@ package com.example.mungandnyang
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ActivityDetailInfoBinding
 
@@ -14,20 +13,24 @@ class DetailInfoActivity : AppCompatActivity() {
         binding = ActivityDetailInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(intent.hasExtra("no") && intent.hasExtra("name") && intent.hasExtra("gender") && intent.hasExtra("age")
-            && intent.hasExtra("kind") && intent.hasExtra("date") && intent.hasExtra("imageUrl")){
-            Glide.with(binding.root.context).load(intent.getStringExtra("imageUrl")).into(binding.ivDeinfoPicture)
-            Log.d("com.example.database", "**${intent.getStringExtra("imageUrl")}")
-            binding.tvDeinfoName.setText(intent.getStringExtra("name"))
-            if(intent.hasExtra("gender").equals("${"W"}")){
-                binding.ivDeinfoGender.setImageResource(R.drawable.female)
-            }else{
-                binding.ivDeinfoGender.setImageResource(R.drawable.male)
+        val adoptDAO = AdoptDAO()
+        val imgRef = adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg")
+        imgRef.downloadUrl.addOnCompleteListener {
+            if(it.isSuccessful){
+                Glide.with(applicationContext).load(it.result).into(binding.ivDeinfoPicture)
             }
-            binding.tvDeinfoKind.setText(intent.getStringExtra("kind"))
-            binding.tvDeinfoNumber.setText(intent.getStringExtra("no"))
-            binding.tvDeinfoAge.setText(intent.getStringExtra("age"))
-            binding.tvDeinfoDate.setText(intent.getStringExtra("date"))
         }
+
+        if(intent.getStringExtra("gender").equals("W")){
+            binding.ivDeinfoGender.setImageResource(R.drawable.female)
+        }else{
+            binding.ivDeinfoGender.setImageResource(R.drawable.male)
+        }
+
+        binding.tvDeinfoName.text = intent.getStringExtra("name")
+        binding.tvDeinfoKind.text = intent.getStringExtra("breed")
+        binding.tvDeinfoDate.text = intent.getStringExtra("date")
+        binding.tvDeinfoText.text = intent.getStringExtra("text")
+
     }
 }
