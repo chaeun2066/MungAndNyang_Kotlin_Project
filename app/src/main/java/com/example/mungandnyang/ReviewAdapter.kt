@@ -16,6 +16,8 @@ class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>)
         val binding = (wifiViewholder as ReviewViewHolder).binding
         val reviewData = reviewList.get(position)
 
+        binding.tvRevTitle.isSelected = true
+
         binding.tvRevTitle.text = reviewData.title
         binding.tvRevDate.text = reviewData.date
         binding.ivRevPicture.setImageResource(reviewData.image)

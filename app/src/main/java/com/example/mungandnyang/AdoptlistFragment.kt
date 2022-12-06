@@ -70,7 +70,8 @@ class AdoptlistFragment : Fragment() {
                             var weight = adopt.BDWGH
                             var breed = adopt.BREEDS
                             var date = adopt.ENTRNC_DATE
-                            val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date)
+                            var type = adopt.SPCS
+                            val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date, type)
                             adoptList.add(animalVO)
                             adoptDAO.insertAnimal(animalVO)?.addOnSuccessListener {
                                 Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")

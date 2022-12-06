@@ -54,11 +54,20 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
             binding.ivDeinfoGender.setImageResource(R.drawable.male)
         }
 
+        if(adoptAnimal.type.equals("CAT")){
+            binding.ivType.setImageResource(R.drawable.cat)
+            binding.ivDeinfoType.setImageResource(R.drawable.cat)
+        }else{
+            binding.ivType.setImageResource(R.drawable.dog)
+            binding.ivDeinfoType.setImageResource(R.drawable.dog)
+        }
+
         binding.tvInfoKind.text = adoptAnimal.breed
         binding.tvDeinfoKind.text = adoptAnimal.breed
         binding.tvDeinfoWeight.text = adoptAnimal.weight + "kg"
         binding.tvDeinfoNumber.text = adoptAnimal.number.substring(0..3)
         binding.tvDeinfoAge.text = adoptAnimal.age
+        binding.tvInfoDate.text = adoptAnimal.date
         binding.tvDeinfoDate.text = adoptAnimal.date
 
         binding.btnGuide.setOnClickListener {
