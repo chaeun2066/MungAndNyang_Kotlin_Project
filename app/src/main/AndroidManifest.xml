@@ -26,15 +26,14 @@
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
-                android:value="" />
+                android:value="true" />
         </activity>
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="true" />
-
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="app.BuildConfig.MAP_KEY" />
+            android:value="BuildConfig.MAP_KEY" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
