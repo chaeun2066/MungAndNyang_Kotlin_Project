@@ -10,6 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.viewpager.widget.PagerAdapter
 import com.example.mungandnyang.databinding.ActivityMainBinding
 import com.example.mungandnyang.databinding.TabLayoutItemBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var adoptlistFragment: AdoptlistFragment
     lateinit var reviewFragment: ReviewFragment
-
+    var mBackWait:Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -68,5 +69,15 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onBackPressed() {
+        // 뒤로가기 버튼 클릭
+        if(System.currentTimeMillis() - mBackWait >=2000 ) {
+            mBackWait = System.currentTimeMillis()
+            Snackbar.make(binding.root,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Snackbar.LENGTH_LONG).show()
+        } else {
+            finish() //액티비티 종료
+        }
     }
 }

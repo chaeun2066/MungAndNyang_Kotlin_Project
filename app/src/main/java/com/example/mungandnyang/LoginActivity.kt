@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.mungandnyang.databinding.ActivityLoginBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -15,6 +17,7 @@ import java.util.regex.Pattern
 class LoginActivity : AppCompatActivity() {
     lateinit var binding : ActivityLoginBinding
     lateinit var userAuth : FirebaseAuth
+    var mBackWait:Long = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -74,5 +77,15 @@ class LoginActivity : AppCompatActivity() {
                     Log.d("mungnyang", "Error: ${task.exception}")
                 }
             }
+    }
+
+    override fun onBackPressed() {
+        // 뒤로가기 버튼 클릭
+        if(System.currentTimeMillis() - mBackWait >=2000 ) {
+            mBackWait = System.currentTimeMillis()
+            Snackbar.make(binding.root,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.",Snackbar.LENGTH_LONG).show()
+        } else {
+            finish() //액티비티 종료
+        }
     }
 }
