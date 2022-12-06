@@ -9,5 +9,5 @@ data class AnimalVO(
     var weight : String="",
     var breed : String="",
     var date : String="",
-    var intro : String = ""
+    var type : String = ""
 )

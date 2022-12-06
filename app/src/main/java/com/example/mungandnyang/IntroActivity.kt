@@ -13,11 +13,9 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent= Intent( this, LoginActivity::class.java)
+            val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
-            //기기 설정 필요
             finish()
         }, 7000)
         Glide.with(this).load(R.raw.happydog).override(700,700).into(binding.ivIaDog)

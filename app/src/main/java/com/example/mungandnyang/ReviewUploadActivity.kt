@@ -85,7 +85,7 @@ class ReviewUploadActivity : AppCompatActivity() {
             DatePickerDialog(binding.root.context, object: DatePickerDialog.OnDateSetListener {
                 override fun onDateSet(datePicker: DatePicker?, yyyy: Int, MM: Int, dd: Int) {
                     var year = yyyy
-                    var month = MM
+                    var month = MM + 1
                     var date = dd
                     Log.d("IU Player", "year: ${year}, month: ${month}, date: ${date}")
                     if(date < 10){
