@@ -8,7 +8,9 @@
     <ScrollView
         android:id="@+id/review_scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/lighter"
+        android:padding="5dp">
 
         <LinearLayout
             android:id="@+id/review_layout"
@@ -22,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:text="CAFE REVIEW"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -45,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="USER REVIEW"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -60,6 +62,14 @@
                     android:id="@+id/user_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/review_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -107,15 +117,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
         android:backgroundTint="@color/green"
-        android:src="@drawable/add"
+        android:src="@drawable/ic_add_24"
         android:visibility="visible" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/review_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
