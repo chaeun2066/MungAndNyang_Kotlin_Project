@@ -2,6 +2,7 @@ package com.example.mungandnyang
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mungandnyang.databinding.ActivityFriendslistBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -31,6 +32,9 @@ class FriendslistActivity : AppCompatActivity() {
         binding.allUserRecyclerView.setHasFixedSize(true)
         binding.allUserRecyclerView.adapter = adapter
 
+        setSupportActionBar(binding.friendlistToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         //사용자 정보 가져오기
         database.child("user").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -48,5 +52,16 @@ class FriendslistActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val itemId = item.itemId
+        when (itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

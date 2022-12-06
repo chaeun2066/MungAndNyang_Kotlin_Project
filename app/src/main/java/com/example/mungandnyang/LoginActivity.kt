@@ -51,8 +51,8 @@ class LoginActivity : AppCompatActivity() {
                 manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
                 Toast.makeText(this, "올바르지 않은 이메일 형식입니다.", Toast.LENGTH_SHORT).show()
             }else if(!passwordRegex.matcher(password).matches()){
-                binding.edtLAEmail.requestFocus()
-                manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
+                binding.edtLAPassword.requestFocus()
+                manager.showSoftInput(binding.edtLAPassword, InputMethodManager.SHOW_IMPLICIT)
                 Toast.makeText(this, "잘못된 비밀번호입니다.", Toast.LENGTH_SHORT).show()
             }else{
                 login(email, password)
