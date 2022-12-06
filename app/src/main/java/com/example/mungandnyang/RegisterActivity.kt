@@ -31,9 +31,6 @@ class RegisterActivity : AppCompatActivity() {
         //데이터 베이스 초기화
         userDatabase = Firebase.database.reference
 
-        //회원가입 로고 이미지
-        Glide.with(this).load(R.raw.register).override(700,700).into(binding.ivRAMung)
-
         //전화번호 입력 시 (-) 자동생성
         binding.edtRAPhone.addTextChangedListener(PhoneNumberFormattingTextWatcher())
 
@@ -49,7 +46,7 @@ class RegisterActivity : AppCompatActivity() {
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{10,15}$")
             val emailRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
-            val phoneRegex = Pattern.compile("^(?=.*[0-9])(?=.*[-])[[0-9]-]{13,}$")
+//            val phoneRegex = Pattern.compile("^(?=.*[0-9])(?=.*[-])[[0-9]-]{13,}$")
             val name = binding.edtRAName.text.toString().trim()
             val email = binding.edtRAEmail.text.toString().trim()
             val password = binding.edtRAPassword.text.toString().trim()
@@ -67,11 +64,11 @@ class RegisterActivity : AppCompatActivity() {
                 binding.edtRAPhone.requestFocus()
                 manager.showSoftInput(binding.edtRAPhone, InputMethodManager.SHOW_IMPLICIT)
                 Toast.makeText(this, "이름을 입력해주세요", Toast.LENGTH_SHORT).show()
-            } else if (phone.isEmpty() || !phoneRegex.matcher(password).matches()) {
-                binding.edtRAPassword.text.clear()
-                binding.edtRAPassword.requestFocus()
-                manager.showSoftInput(binding.edtRAPassword, InputMethodManager.SHOW_IMPLICIT)
-                Toast.makeText(this, "연락처를 정확히 입력해주세요", Toast.LENGTH_SHORT).show()
+//            } else if (phone.isEmpty() || !phoneRegex.matcher(password).matches()) {
+//                binding.edtRAPassword.text.clear()
+//                binding.edtRAPassword.requestFocus()
+//                manager.showSoftInput(binding.edtRAPassword, InputMethodManager.SHOW_IMPLICIT)
+//                Toast.makeText(this, "연락처를 정확히 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 register(name, email, password, phone)
             }
