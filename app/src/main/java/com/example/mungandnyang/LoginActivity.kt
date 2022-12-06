@@ -6,8 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -75,7 +73,6 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "이메일 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
                     Log.d("mungnyang", "Error: ${task.exception}")
                 }
-
             }
     }
 }

@@ -7,14 +7,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="해당 게시물을 삭제하시겠습니까?"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/iphone_red"/>
+        android:text="해당 게시물을 삭제하시겠습니까?"
+        android:textColor="@color/iphone_red"
+        android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/edt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberPassword"
@@ -33,17 +35,19 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
             android:text="cancle"/>
 
         <Button
+            android:id="@+id/btn_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
             android:background="@drawable/button_background"
-            android:text="네"/>
+            android:text="yes"/>
 
     </LinearLayout>
 
