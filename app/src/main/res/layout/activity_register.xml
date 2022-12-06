@@ -1,222 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
     <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="630dp"
-        android:padding="2dp"
-        android:layout_gravity="center"
-        android:background="@drawable/white_round_background"
-        android:elevation="5dp"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="9"
+        android:background="@drawable/yellow_background">
 
-        <ImageView
-            android:id="@+id/iv_RA_mung"
-            android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="-15dp"
-            android:layout_marginRight="5dp"
-            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_RA_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="-50dp"
-            android:text="이름 :"
-            android:textColor="@color/hjm_black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="0"
+        android:background="#F8F0E5">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/second_white_radious"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@drawable/white_background"
+            android:orientation="vertical"
+            android:padding="30dp">
 
-            <ImageView
-                android:id="@+id/iv_RA_name"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                app:srcCompat="@drawable/ic_person_24" />
 
-            <EditText
-                android:id="@+id/edt_RA_name"
-                android:layout_width="220dp"
+            <TextView
+                android:id="@+id/tv_first"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:hint="이름을 입력해주세요"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_RA_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="연락처 : "
-            android:textColor="@color/hjm_black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/second_white_radious"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_RA_phone"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                app:srcCompat="@drawable/ic_phone_24" />
-
-            <EditText
-                android:id="@+id/edt_RA_phone"
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:hint="010-1234-5678"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_RA_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="이메일 : "
-            android:textColor="@color/hjm_black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/second_white_radious"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_RA_email"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                app:srcCompat="@drawable/ic_email_24" />
-
-            <EditText
-                android:id="@+id/edt_RA_email"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:hint="mungNyang@gmail.com"
+                android:layout_marginBottom="10dp"
+                android:text="처음 오셨나요?"
+                android:textColor="#97733F"
                 android:textSize="20sp"
-                android:inputType="textEmailAddress"/>
-        </LinearLayout>
+                android:textStyle="bold" />
 
-
-        <TextView
-            android:id="@+id/tv_LA_PW"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:text="비밀번호 : "
-            android:textColor="@color/hjm_black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/second_white_radious"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/iv_RA_password"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_marginLeft="20dp"
-                app:srcCompat="@drawable/ic_phone_24" />
-
-            <EditText
-                android:id="@+id/edt_RA_password"
-                android:layout_width="220dp"
+            <TextView
+                android:id="@+id/tv_intro"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="10dp"
-                android:background="@android:color/transparent"
-                android:hint="영문,숫자,특수기호 조합(10~15자 이내)"
-                android:inputType="textPassword"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_RA_register"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/button_background"
-            android:text="가입하기"
-            android:textColor="@color/white"
-            android:textSize="20sp"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+                android:text="서비스 이용을 위해 사용자의 정보를 입력해주세요." />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이미 회원이신가요?"
-                android:textColor="@color/hjm_black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="20dp"
+                android:text="Name"
+                android:textColor="#4E4E4E"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_person_24"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                </ImageView>
+
+                <EditText
+                    android:id="@+id/edt_RA_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="이름을 입력해주세요"
+                    android:inputType="textEmailAddress"/>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/tv_RA_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="로그인 하러가기"
-                android:textColor="@color/iphone_orange"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="5dp"
+                android:text="Phone"
+                android:textColor="#4E4E4E"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_phone_24"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                </ImageView>
+
+                <EditText
+                    android:id="@+id/edt_RA_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="010-1234-5678"
+                    android:inputType="textEmailAddress"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Email Address"
+                android:textColor="#4E4E4E"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_email_24"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                </ImageView>
+
+                <EditText
+                    android:id="@+id/edt_RA_Email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="mungNyang@gmail.com"
+                    android:inputType="textEmailAddress"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Password"
+                android:textColor="#4E4E4E"
+                android:textSize="18sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_background"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_key_24"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp">
+                </ImageView>
+
+                <EditText
+                    android:id="@+id/edt_RA_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:hint="영문,숫자,특수기호 조합(10~15자)"
+                    android:inputType="textPassword" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_RA_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/button_background"
+                    android:text="SIGN UP"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"></Button>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="이미 회원이신가요?"
+                        android:textColor="@color/hjm_gray"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_RA_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="로그인"
+                        android:textSize="15sp"
+                        android:textColor="#C19657"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
