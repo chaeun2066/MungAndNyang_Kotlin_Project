@@ -1,6 +1,7 @@
 package com.example.mungandnyang
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -112,6 +113,7 @@ class ReviewFragment : Fragment() {
 
         binding.fab.setOnClickListener {
             if(isOpened){
+                binding.reviewBackfround.setBackgroundColor(Color.parseColor("#99FFFFFF"))
                 binding.fab.setImageResource(R.drawable.minus)
                 binding.fabHome.visibility = View.VISIBLE
                 binding.fabCafe.visibility = View.VISIBLE
@@ -133,6 +135,7 @@ class ReviewFragment : Fragment() {
                     startActivity(intent)
                 }
             }else{
+                binding.reviewBackfround.setBackgroundColor(Color.parseColor("#00FFFFFF"))
                 binding.fab.setImageResource(R.drawable.add)
                 binding.fabHome.visibility = View.INVISIBLE
                 binding.fabCafe.visibility = View.INVISIBLE

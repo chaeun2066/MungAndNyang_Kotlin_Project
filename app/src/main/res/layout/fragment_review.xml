@@ -6,10 +6,12 @@
     tools:context=".ReviewFragment">
 
     <ScrollView
+        android:id="@+id/review_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/review_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
@@ -73,7 +75,7 @@
         android:layout_marginBottom="80dp"
         android:backgroundTint="@color/green"
         android:src="@drawable/camera"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cafe"
@@ -84,7 +86,7 @@
         android:layout_marginBottom="145dp"
         android:backgroundTint="@color/green"
         android:src="@drawable/cafe"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
@@ -95,7 +97,7 @@
         android:layout_marginBottom="210dp"
         android:backgroundTint="@color/green"
         android:src="@drawable/homepage"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -107,5 +109,12 @@
         android:backgroundTint="@color/green"
         android:src="@drawable/add"
         android:visibility="visible" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/review_backfround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
