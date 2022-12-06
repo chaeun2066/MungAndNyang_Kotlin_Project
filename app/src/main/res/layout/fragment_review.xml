@@ -69,42 +69,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="70dp"
-        android:backgroundTint="@color/hjm_white"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/green"
         android:src="@drawable/camera"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cafe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="135dp"
-        android:backgroundTint="@color/hjm_white"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="145dp"
+        android:backgroundTint="@color/green"
         android:src="@drawable/cafe"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="200dp"
-        android:backgroundTint="@color/hjm_white"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="210dp"
+        android:backgroundTint="@color/green"
         android:src="@drawable/homepage"
-        android:visibility="invisible" />
+        android:visibility="visible" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="5dp"
-        android:backgroundTint="@color/hjm_white"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/green"
         android:src="@drawable/add"
         android:visibility="visible" />
 
