@@ -134,6 +134,13 @@ class ReviewFragment : Fragment() {
                     val intent = Intent(binding.root.context, ReviewUploadActivity::class.java)
                     startActivity(intent)
                 }
+                binding.reviewBackfround.setOnClickListener {
+                    binding.reviewBackfround.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+                    binding.fab.setImageResource(R.drawable.add)
+                    binding.fabHome.visibility = View.INVISIBLE
+                    binding.fabCafe.visibility = View.INVISIBLE
+                    binding.fabCam.visibility = View.INVISIBLE
+                }
             }else{
                 binding.reviewBackfround.setBackgroundColor(Color.parseColor("#00FFFFFF"))
                 binding.fab.setImageResource(R.drawable.add)
