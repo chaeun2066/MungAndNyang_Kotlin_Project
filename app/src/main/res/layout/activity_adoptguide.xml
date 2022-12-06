@@ -8,13 +8,20 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/adoptlist_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.Material3.NavigationView"
+        android:background="#F8F0E5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            app:srcCompat="@drawable/leaf" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +29,7 @@
             android:layout_gravity="center"
             android:textStyle="italic"
             android:textSize="25sp"
-            android:textColor="@color/iphone_orange"/>
+            android:textColor="#97733F"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -44,7 +51,7 @@
                 android:id="@+id/tv_adoptTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
+                android:layout_margin="10dp"
                 android:gravity="center"
                 android:text="입양안내"
                 android:textAllCaps="false"
@@ -232,22 +239,22 @@
 
                 <Button
                     android:id="@+id/btn_mapo"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:text="마포센터 안내"
+                    android:background="@drawable/button_background"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="@color/iphone_blue"/>
+                    android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/btn_guri"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
+                    android:background="@drawable/button_background"
                     android:text="구리센터 안내"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="@color/iphone_blue"/>
+                    android:textStyle="bold"/>
 
             </LinearLayout>
         </LinearLayout>
