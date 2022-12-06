@@ -37,7 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="103dp">
+            tools:layout_editor_absoluteY="103dp"
+            app:tabIndicatorColor="@color/green"
+            app:tabBackground="@drawable/tab_selector">
 
         </com.google.android.material.tabs.TabLayout>
 

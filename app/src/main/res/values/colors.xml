@@ -22,4 +22,7 @@
     <color name="yellow_brown">#F8F0E5</color>
     <color name="font_brown">#97733F</color>
     <color name="green">#438038</color>
+    <color name="light">#FAF5EF</color>
+    <color name="select">#EFE9E1</color>
+    <color name="lighter">#FDFBF8</color>
 </resources>
