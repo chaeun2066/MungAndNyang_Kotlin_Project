@@ -88,61 +88,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/deinfo_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="동물번호 : " />
-
-                    <TextView
-                        android:id="@+id/tv_deinfo_number"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:hint="동물번호" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/deinfo_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="나이 : " />
-
-                <TextView
-                    android:id="@+id/tv_deinfo_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="나이" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
                 <TextView
                     android:id="@+id/deinfo_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="보호소 온 날 : " />
+                    android:text="발견 한 날 : " />
 
                 <TextView
                     android:id="@+id/tv_deinfo_date"

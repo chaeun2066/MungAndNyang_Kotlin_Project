@@ -41,8 +41,10 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
         binding.tvInfoName.text = adoptAnimal.name
-        binding.deinfoName.text = adoptAnimal.name
+        binding.tvDeinfoName.text = adoptAnimal.name
+
         if(adoptAnimal.gender.equals("W")){
             binding.ivGender.setImageResource(R.drawable.female)
             binding.ivDeinfoGender.setImageResource(R.drawable.female)
@@ -50,12 +52,13 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
             binding.ivGender.setImageResource(R.drawable.male)
             binding.ivDeinfoGender.setImageResource(R.drawable.male)
         }
+
         binding.tvInfoKind.text = adoptAnimal.breed
-        binding.deinfoKind.text = adoptAnimal.breed
-        binding.deinfoWeight.text = adoptAnimal.weight + "kg"
-        binding.deinfoNumber.text = adoptAnimal.number
-        binding.deinfoAge.text = adoptAnimal.age
-        binding.deinfoDate.text = adoptAnimal.date
+        binding.tvDeinfoKind.text = adoptAnimal.breed
+        binding.tvDeinfoWeight.text = adoptAnimal.weight + "kg"
+        binding.tvDeinfoNumber.text = adoptAnimal.number.substring(0..3)
+        binding.tvDeinfoAge.text = adoptAnimal.age
+        binding.tvDeinfoDate.text = adoptAnimal.date
 
         binding.btnGuide.setOnClickListener {
             val intent = Intent(binding.root.context, AdoptguideActivity::class.java)
