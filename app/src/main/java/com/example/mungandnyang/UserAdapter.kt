@@ -23,6 +23,7 @@ class UserAdapter(val context: Context, val userList:MutableList<User>):Recycler
         binding.ivItemUser.setImageResource(R.drawable.user)
         binding.tvItemName.text = user.name
         binding.tvItemEmail.text = user.email
+        binding.ivEnter.setImageResource(R.drawable.enter)
 
         binding.root.setOnClickListener{
             val intent = Intent(context, ChatActivity::class.java)
@@ -30,7 +31,6 @@ class UserAdapter(val context: Context, val userList:MutableList<User>):Recycler
             intent.putExtra("uId", user.uId)
 
             context.startActivity(intent)
-            //아래 리스트에 History 대화방 남기는 것
         }
     }
 

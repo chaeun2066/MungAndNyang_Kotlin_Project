@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FriendslistActivity"
-    android:orientation="vertical"
-    android:weightSum="100">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/friendlist_toolbar"
@@ -14,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="#F8F0E5"
-        android:layout_marginTop="0dp" >
+        android:layout_marginTop="0dp"
+        android:elevation="5dp">
 
         <ImageView
             android:id="@+id/imageView"
@@ -35,23 +35,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="5"
         android:orientation="vertical"
         android:padding="10dp"
-        android:layout_weight="5">
+        android:background="@color/lighter">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
             android:text="추천 친구목록"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/iphone_orange"
-            android:textSize="25sp"
+            android:textColor="@color/font_brown"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/allUser_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
     </LinearLayout>
 </LinearLayout>

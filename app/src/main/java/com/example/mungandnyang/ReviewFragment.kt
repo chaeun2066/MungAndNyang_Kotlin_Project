@@ -172,7 +172,7 @@ class ReviewFragment : Fragment() {
 
     private fun floatingClose() {
         binding.reviewBackground.visibility = View.INVISIBLE
-        binding.fab.setImageResource(R.drawable.add)
+        binding.fab.setImageResource(R.drawable.ic_add_24)
         binding.fabHome.visibility = View.INVISIBLE
         binding.fabCafe.visibility = View.INVISIBLE
         binding.fabCam.visibility = View.INVISIBLE
