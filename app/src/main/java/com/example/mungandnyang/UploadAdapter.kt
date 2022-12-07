@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ReviewItemBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>): RecyclerView.Adapter<UploadAdapter.UploadViewHolder>() {
 
     override fun onBindViewHolder(viewholder: UploadViewHolder, position: Int) {
         val binding = (viewholder as UploadViewHolder).binding
         val uploadData = uploadList.get(position)
+        val userAuth = Firebase.auth
 
         binding.tvRevTitle.text = uploadData.name
         binding.tvRevDate.text = uploadData.date
@@ -28,9 +31,11 @@ class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>)
 
         viewholder.itemView.setOnClickListener {
             val intent = Intent(binding.root.context, DetailInfoActivity::class.java)
+            intent.putExtra("uId", uploadData.uId)
             intent.putExtra("docId", uploadData.docId)
             intent.putExtra("name", uploadData.name)
             intent.putExtra("gender", uploadData.gender)
+            intent.putExtra("age",uploadData.age)
             intent.putExtra("breed", uploadData.breed)
             intent.putExtra("date", uploadData.date)
             intent.putExtra("text", uploadData.text)
