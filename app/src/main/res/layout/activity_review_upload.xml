@@ -6,25 +6,53 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="#F4F2EF"
     tools:context=".ReviewUploadActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="입양 후기"
+            android:textColor="@color/font_brown"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="를 작성해주세요"
+            android:textSize="17sp"/>
+
+
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/iv_revup_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
-        app:srcCompat="@drawable/pet_icon" />
+        app:srcCompat="@drawable/addphoto" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/white_detail_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,14 +69,18 @@
                         android:id="@+id/revup_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="이름 : " />
+                        android:text="이름 : "
+                        android:textColor="@color/font_brown"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="17sp"/>
 
                     <EditText
                         android:id="@+id/tv_revup_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:hint="이름" />
+                        android:textSize="17sp"
+                        android:hint="이름"
+                        android:background="@android:color/transparent"/>
 
                 </LinearLayout>
 
@@ -72,14 +104,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="나이 : " />
+                    android:text="나이 : "
+                    android:textColor="@color/font_brown"
+                    android:textSize="17sp"/>
 
                 <EditText
                     android:id="@+id/tv_revup_age"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:hint="나이" />
+                    android:textSize="17sp"
+                    android:hint="나이"
+                    android:background="@android:color/transparent"/>
 
             </LinearLayout>
 
@@ -94,14 +129,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="종 : " />
+                    android:text="종 : "
+                    android:textColor="@color/font_brown"
+                    android:textSize="17sp"/>
 
                 <EditText
                     android:id="@+id/tv_revup_kind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:hint="종" />
+                    android:textSize="17sp"
+                    android:hint="종"
+                    android:background="@android:color/transparent"/>
 
             </LinearLayout>
 
@@ -116,13 +154,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="발견 한 날 : " />
+                    android:text="함께 한 날 : "
+                    android:textColor="@color/font_brown"
+                    android:textSize="17sp"/>
 
                 <TextView
                     android:id="@+id/tv_revup_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="17sp"
                     android:hint="DATE" />
 
             </LinearLayout>
@@ -136,15 +176,18 @@
                     android:id="@+id/revup_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="내용" />
+                    android:text="내용"
+                    android:textColor="@color/font_brown"
+                    android:textSize="17sp"/>
 
                 <EditText
                     android:id="@+id/tv_revup_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
-                    android:textSize="12sp"
-                    android:hint="내용" />
+                    android:textSize="17sp"
+                    android:hint="내용"
+                    android:background="@android:color/transparent"/>
 
             </LinearLayout>
 
@@ -155,7 +198,10 @@
     <Button
         android:id="@+id/btn_revup_reg"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="등록" />
+        android:layout_height="50dp"
+        android:text="등록"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:background="@drawable/button_background"/>
 
 </LinearLayout>
