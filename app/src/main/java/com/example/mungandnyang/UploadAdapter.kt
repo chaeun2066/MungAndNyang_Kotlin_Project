@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ReviewItemBinding
@@ -24,7 +25,7 @@ class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>)
         val imgRef = adoptDAO.storage!!.reference.child("images/${uploadData.docId}.jpg")
         imgRef.downloadUrl.addOnCompleteListener {
             if(it.isSuccessful){
-                Glide.with(context).load(it.result).into(binding.ivRevPicture)
+                Glide.with(context).load(it.result).centerCrop().into(binding.ivRevPicture)
                 binding.ivRevHashtag.setImageResource(R.drawable.phone)
             }
         }

@@ -38,7 +38,7 @@
         android:id="@+id/iv_deinfo_picture"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1.2"
+        android:layout_weight="1"
         app:srcCompat="@drawable/pet_icon" />
 
     <ScrollView

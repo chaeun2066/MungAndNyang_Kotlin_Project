@@ -22,7 +22,7 @@ class DetailInfoActivity : AppCompatActivity() {
         val imgRef = adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg")
         imgRef.downloadUrl.addOnCompleteListener {
             if(it.isSuccessful){
-                Glide.with(applicationContext).load(it.result).into(binding.ivDeinfoPicture)
+                Glide.with(applicationContext).load(it.result).centerCrop().into(binding.ivDeinfoPicture)
             }
         }
 
