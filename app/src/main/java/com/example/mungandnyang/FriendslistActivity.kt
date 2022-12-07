@@ -40,7 +40,6 @@ class FriendslistActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(postSnapshot in snapshot.children){
                     val currentUser = postSnapshot.getValue(User::class.java)
-
                     if(userAuth.currentUser?.uid != currentUser?.uId){
                         userList.add(currentUser!!)
                     }

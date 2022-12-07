@@ -17,12 +17,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import com.bumptech.glide.Glide
 import com.example.mungandnyang.databinding.ActivityReviewUploadBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.time.LocalDateTime.now
 
 class ReviewUploadActivity : AppCompatActivity() {
     lateinit var binding: ActivityReviewUploadBinding
     var imageUri: Uri? = null
     var gender: String = ""
+    val userAuth = Firebase.auth
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,11 +104,13 @@ class ReviewUploadActivity : AppCompatActivity() {
             if(binding.ivRevupPicture.drawable != null && binding.tvRevupDate.text.isNotEmpty()){
                 val adoptDAO = AdoptDAO()
                 val docId = adoptDAO.reviewDbReference?.push()?.key
+                val uId = userAuth.currentUser?.uid.toString()
                 val name = binding.tvRevupName.text.toString()
                 val breed = binding.tvRevupKind.text.toString()
                 val date = binding.tvRevupDate.text.toString()
                 val text = binding.tvRevupText.text.toString()
-                val uploadData = UploadVO(docId, name, gender, breed, date, text)
+                val age = binding.tvRevupAge.text.toString()
+                val uploadData = UploadVO(docId, uId, name, gender, breed, date, text, age)
                 val uploadImg = adoptDAO.storage!!.reference.child("images/${uploadData.docId}.jpg")
                 uploadImg.putFile(imageUri!!)?.addOnSuccessListener{
                     adoptDAO.reviewDbReference?.child(docId!!)?.setValue(uploadData)?.addOnSuccessListener {
