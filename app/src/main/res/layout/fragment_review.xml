@@ -22,7 +22,7 @@
                 android:id="@+id/tv_cafe_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="CAFE REVIEW"
+                android:text="CAFE REVIEW   ───────────────"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
@@ -45,7 +45,7 @@
                 android:id="@+id/tv_user_review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="USER REVIEW"
+                android:text="USER REVIEW   ───────────────"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
@@ -63,19 +63,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/review_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="invisible">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/review_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_cam"
