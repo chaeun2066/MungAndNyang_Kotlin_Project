@@ -1,6 +1,5 @@
 package com.example.mungandnyang
 
-import android.app.ProgressDialog.show
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.viewpager.widget.PagerAdapter
 import com.example.mungandnyang.databinding.ActivityMainBinding
 import com.example.mungandnyang.databinding.TabLayoutItemBinding
 import com.google.android.material.snackbar.Snackbar
@@ -21,12 +18,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
-    lateinit var toggle: ActionBarDrawerToggle
     lateinit var binding : ActivityMainBinding
     lateinit var adoptlistFragment: AdoptlistFragment
     lateinit var reviewFragment: ReviewFragment
     var mBackWait:Long = 0
     lateinit var userAuth : FirebaseAuth
+    var mySharedPreferences: MySharedPreferences = MySharedPreferences()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,6 +83,7 @@ class MainActivity : AppCompatActivity() {
             override fun onClick(userDialog: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE){
                     userAuth.signOut()
+                    mySharedPreferences.clearUser(this@MainActivity)
                     val intent = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(applicationContext, "로그아웃 하셨습니다", Toast.LENGTH_SHORT).show()

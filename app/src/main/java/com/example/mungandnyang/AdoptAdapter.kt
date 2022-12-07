@@ -3,7 +3,6 @@ package com.example.mungandnyang
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -28,14 +27,13 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
         val binding = (holder as AdoptViewHolder).binding
         val adoptAnimal = adoptList[position]
         animalDatabase = Firebase.database.reference
-
         animalDatabase.child("AdoptPhoto").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(postSnapshot in snapshot.children){
                     val currentAnimal = postSnapshot.getValue(PhotoVO::class.java)
                     if(currentAnimal!!.ani_number == adoptAnimal.number){
-                        Glide.with(context).load("https://${currentAnimal!!.photo_url}").into(binding.ivThumb)
-                        Glide.with(context).load("https://${currentAnimal!!.photo_url}").into(binding.ivDeinfoPicture)
+                        Glide.with(context.applicationContext).load("https://${currentAnimal!!.photo_url}").into(binding.ivThumb)
+                        Glide.with(context.applicationContext).load("https://${currentAnimal!!.photo_url}").into(binding.ivDeinfoPicture)
                     }
                 }
             }
