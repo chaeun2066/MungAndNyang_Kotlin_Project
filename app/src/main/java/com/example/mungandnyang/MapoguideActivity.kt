@@ -71,6 +71,7 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
 
         setSupportActionBar(binding.mapoToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

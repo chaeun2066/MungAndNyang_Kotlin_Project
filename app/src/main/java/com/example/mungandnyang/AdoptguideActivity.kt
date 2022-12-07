@@ -44,6 +44,7 @@ class AdoptguideActivity : AppCompatActivity()  {
 
         setSupportActionBar(binding.adoptlistToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
