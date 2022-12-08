@@ -73,11 +73,24 @@ class AdoptlistFragment : Fragment() {
                             var type = adopt.SPCS
                             val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date, type)
                             adoptList.add(animalVO)
-                            adoptDAO.insertAnimal(animalVO)?.addOnSuccessListener {
-                                Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")
-                            }?.addOnFailureListener {
-                                Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 실패")
-                            }
+
+                            adoptDatabase.child("AdoptList").addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    if(!snapshot.exists()){
+                                        adoptDAO.insertAnimal(animalVO)?.addOnSuccessListener {
+                                            Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 성공")
+                                        }?.addOnFailureListener {
+                                            Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 실패")
+                                        }
+                                    }else{
+                                        Log.d("com.example.mungandnyang", " 성 공 ")
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+                            })
                         }
                         adapter = AdoptAdapter(binding.root.context, adoptList)
                         binding.recyclerView.layoutManager = LinearLayoutManager(container?.context)
@@ -105,11 +118,24 @@ class AdoptlistFragment : Fragment() {
                             val photo_kind = animal.PHOTO_KND
                             if(photo_kind.equals("THUMB")) {
                                 val photoVO = PhotoVO(ani_number, photo_url, photo_kind)
-                                adoptDAO.insertPhoto(photoVO)?.addOnSuccessListener {
-                                    Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 성공")
-                                }?.addOnFailureListener{
-                                    Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 실패")
-                                }
+
+                                adoptDatabase.child("AdoptPhoto").addListenerForSingleValueEvent(object : ValueEventListener{
+                                    override fun onDataChange(snapshot: DataSnapshot) {
+                                        if(!snapshot.exists()){
+                                            adoptDAO.insertPhoto(photoVO)?.addOnSuccessListener {
+                                                Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 성공")
+                                            }?.addOnFailureListener{
+                                                Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 실패")
+                                            }
+                                        }else{
+                                            Log.d("com.example.mungandnyang", " 성 공 2")
+                                        }
+                                    }
+
+                                    override fun onCancelled(error: DatabaseError) {
+
+                                    }
+                                })
                             }
                         }
                     }?: let{
