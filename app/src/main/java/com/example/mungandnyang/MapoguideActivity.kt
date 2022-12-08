@@ -99,8 +99,11 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     override fun onMapReady(googleMap: GoogleMap) {
         val center = LatLng(LATITUDE, LONGTITUDE)
         googleMap.addMarker(MarkerOptions().position(center).title(ADOPTNAME))
+<<<<<<< HEAD
+=======
         // ** 삭제하고 실행해보기 **//
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
+>>>>>>> a852ba3554b3281be36406744641d6809fa2fb24
 
         val cameraPosition = CameraPosition.Builder()
             .target(center)
@@ -108,6 +111,7 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
             .build()
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
+
 
     override fun onBackPressed() {
         super.onBackPressed()
