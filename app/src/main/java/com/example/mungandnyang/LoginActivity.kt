@@ -54,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
-                        Toast.makeText(this, "멍앤냥에 오신걸 환영합니다!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "${binding.edtLAEmail.text}님 멍앤냥에 오신걸 환영합니다!", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                 }
@@ -88,11 +88,11 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Toast.makeText(this, "멍앤냥에 오신걸 환영합니다!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "${email}님 멍앤냥에 오신걸 환영합니다!", Toast.LENGTH_SHORT).show()
                     finish()
                 }else {
-                    Toast.makeText(this, "이메일 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
-                    Log.d("mungnyang", "Error: ${task.exception}")
+                    Toast.makeText(this, "이메일 또는 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show()
+                    Log.d("mungandnyang", "Error: ${task.exception}")
                 }
             }
     }
@@ -105,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
                         mySharedPreferences.setUserPass(this, password)
                         Toast.makeText(
                             this,
-                            "${mySharedPreferences.getUserId(this)}님 로그인 되었습니다.",
+                            "${mySharedPreferences.getUserId(this)}님 멍앤냥에 오신걸 환영합니다!",
                             Toast.LENGTH_SHORT
                         ).show()
                         val intent = Intent(this, MainActivity::class.java)
@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
                         finish()
                     } else {
                         Toast.makeText(this, "이메일 또는 비밀번호를 다시 확인해주세요", Toast.LENGTH_SHORT).show()
-                        Log.d("mungnyang", "Error: ${task.exception}")
+                        Log.d("mungandnyang", "Error: ${task.exception}")
                     }
             }
     }
