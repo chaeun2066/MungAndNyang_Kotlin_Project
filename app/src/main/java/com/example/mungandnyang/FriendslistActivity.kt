@@ -41,6 +41,7 @@ class FriendslistActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(postSnapshot in snapshot.children){
                     val currentUser = postSnapshot.getValue(User::class.java)
+                    //나를 제외한 모든 유저의 리스트
                     if(userAuth.currentUser?.uid != currentUser?.uId){
                         userList.add(currentUser!!)
                     }

@@ -123,6 +123,7 @@ class LoginActivity : AppCompatActivity() {
             Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{0,15}$")
         val emailRegex =
             Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
+        //** 정확한 기능 검색 **//
         var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val password = binding.edtLAPassword.text.toString()
         val email = binding.edtLAEmail.text.toString()
@@ -140,6 +141,7 @@ class LoginActivity : AppCompatActivity() {
             Toast.makeText(this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
         } else if (!emailRegex.matcher(email).matches()) {
             binding.edtLAEmail.requestFocus()
+            // 입력 표현식이 틀렸을 시, 자동으로 틀린 부분을 보여지게하는
             manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
             Toast.makeText(this, "올바르지 않은 이메일 형식입니다.", Toast.LENGTH_SHORT).show()
         } else if (!passwordRegex.matcher(password).matches()) {

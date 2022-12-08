@@ -48,10 +48,10 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
         }
         (supportFragmentManager.findFragmentById(R.id.mapoMapView) as SupportMapFragment?)?.getMapAsync(this)
         if(
-            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !== PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !== PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) !== PackageManager.PERMISSION_GRANTED ||
-            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) !== PackageManager.PERMISSION_GRANTED ){
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) != PackageManager.PERMISSION_GRANTED ||
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ){
 
             requestPermissionLauncher.launch( arrayOf(
                 Manifest.permission.ACCESS_FINE_LOCATION,
@@ -99,6 +99,11 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     override fun onMapReady(googleMap: GoogleMap) {
         val center = LatLng(LATITUDE, LONGTITUDE)
         googleMap.addMarker(MarkerOptions().position(center).title(ADOPTNAME))
+<<<<<<< HEAD
+=======
+        // ** 삭제하고 실행해보기 **//
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
+>>>>>>> a852ba3554b3281be36406744641d6809fa2fb24
 
         val cameraPosition = CameraPosition.Builder()
             .target(center)

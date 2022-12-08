@@ -15,6 +15,8 @@ class CustomDialogReviewDelete(val context: Context, val reviewItemBinding: Revi
     fun showDialog(intent: Intent) {
         val binding = CustomDialogReviewDeleteBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
+
+        //Custom Dialog Window Size 조절
         dialog.window!!.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT
@@ -24,9 +26,12 @@ class CustomDialogReviewDelete(val context: Context, val reviewItemBinding: Revi
         dialog.show()
 
         binding.btnYes.setOnClickListener {
+            //관리자 비밀번호 점검
             if(binding.edtPassword.text.toString().equals("1163")){
                 val adoptDAO = AdoptDAO()
+                //Storage 이미지 삭제
                 adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg").delete()
+                //Firebase 후기 내용 삭제
                 adoptDAO.deleteReview(intent.getStringExtra("docId")!!).addOnSuccessListener {
                     Toast.makeText(binding.root.context, "삭제 성공", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
