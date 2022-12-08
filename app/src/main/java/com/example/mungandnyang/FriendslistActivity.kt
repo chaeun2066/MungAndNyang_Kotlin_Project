@@ -34,6 +34,7 @@ class FriendslistActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.friendlistToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         //사용자 정보 가져오기
         database.child("user").addValueEventListener(object : ValueEventListener {

@@ -73,6 +73,7 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
 
         setSupportActionBar(binding.guriToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
