@@ -63,7 +63,7 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
             apiClient?.connect()
         }
 
-        binding.ivCall.setOnClickListener{
+        binding.btnCall.setOnClickListener{
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:02-2124-2839")
             startActivity(intent)
