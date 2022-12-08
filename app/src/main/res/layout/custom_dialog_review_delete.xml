@@ -4,7 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="30dp"
-    android:paddingRight="30dp">
+    android:paddingRight="30dp"
+    android:background="@color/light"
+    android:elevation="5dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -39,16 +41,18 @@
 
         <Button
             android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_background"
+            android:textColor="@color/white"
             android:text="cancle"/>
 
         <Button
             android:id="@+id/btn_yes"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="80dp"
+            android:textColor="@color/white"
             android:background="@drawable/button_background"
             android:text="yes"/>
 

@@ -9,9 +9,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="5"
+        android:background="@drawable/yellow_background"
         android:orientation="vertical"
-        android:layout_weight="9"
-        android:background="@drawable/yellow_background">
+        android:gravity="bottom|left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="REGISTER"
+            android:shadowColor="#869E9083"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="5.0"
+            android:textColor="@color/font_brown"
+            android:textSize="40sp"
+            android:visibility="visible" />
 
     </LinearLayout>
 
@@ -86,7 +102,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Phone"
                 android:textColor="#4E4E4E"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +126,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:hint="010-1234-5678"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="phone"/>
 
             </LinearLayout>
 
@@ -143,7 +159,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:hint="mungNyang@gmail.com"
+                    android:hint="mungnyang@gmail.com"
                     android:inputType="textEmailAddress"/>
 
             </LinearLayout>
@@ -177,7 +193,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:hint="영문,숫자,특수기호 조합(10~15자)"
+                    android:hint="영문,숫자,특수기호 조합(15자이내)"
                     android:inputType="textPassword" />
             </LinearLayout>
 
