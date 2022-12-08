@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.Material3.NavigationView"
-        android:background="#F8F0E5"
+        android:background="@color/lighter"
         android:elevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -237,30 +237,30 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:orientation="horizontal"
-                android:padding="30dp"
+                android:padding="10dp"
                 android:gravity="center">
 
                 <Button
                     android:id="@+id/btn_mapo"
-                    android:layout_width="160dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:text="마포센터 안내"
                     android:background="@drawable/button_background"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     android:textColor="@color/white"
                     android:textStyle="bold"/>
 
                 <Button
                     android:id="@+id/btn_guri"
-                    android:layout_width="160dp"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
                     android:background="@drawable/button_background"
                     android:text="구리센터 안내"
                     android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
             </LinearLayout>

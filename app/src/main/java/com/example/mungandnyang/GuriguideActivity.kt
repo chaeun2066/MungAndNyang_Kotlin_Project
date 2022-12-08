@@ -65,7 +65,7 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
             apiClient?.connect()
         }
 
-        binding.ivCall.setOnClickListener{
+        binding.btnCall.setOnClickListener{
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:02-2636-7645")
             startActivity(intent)

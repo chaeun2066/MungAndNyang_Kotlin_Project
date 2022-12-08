@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#EEF2EA"
+    android:background="@color/lighter"
     tools:context=".GuriguideActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -45,9 +45,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="서울동물복지지원 구리센터"
-        android:textColor="@color/iphone_space_gray"
+        android:textColor="@color/font_brown"
         android:textSize="30sp"/>
 
     <androidx.fragment.app.FragmentContainerView
@@ -55,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/white_round_background"
         android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
     <LinearLayout
@@ -188,15 +189,19 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/iv_call"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+    <Button
+        android:id="@+id/btn_call"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
-        android:background="#EEF2EA"
-        app:srcCompat="@drawable/call" />
+        android:text="입양 전화문의"
+        android:background="@drawable/button_background"
+        android:textSize="20sp"
+        android:textColor="#5E9125"
+        android:textStyle="bold"/>
+
+
 
     </LinearLayout>
 </LinearLayout>
