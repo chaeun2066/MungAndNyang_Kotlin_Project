@@ -151,7 +151,6 @@ class ReviewFragment : Fragment() {
     private fun getUploadList() {
         val adoptDAO = AdoptDAO()
         adoptDAO.selectReview()?.addValueEventListener(object: ValueEventListener {
-            //값이 변경이 되면 이함수가 다시 실행됨
             override fun onDataChange(snapshot: DataSnapshot) {
                 uploadList.clear()
                 for(dataSnapshot in snapshot.children){

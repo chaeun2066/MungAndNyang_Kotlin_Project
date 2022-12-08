@@ -13,11 +13,13 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityIntroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         Handler(Looper.getMainLooper()).postDelayed({
             val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, 7000)
+
         Glide.with(this).load(R.raw.happydog).override(700,700).into(binding.ivIaDog)
         Glide.with(this).load(R.raw.mungandnyang).override(900,900).into(binding.ivIaMung)
     }

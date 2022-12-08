@@ -12,7 +12,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>): RecyclerView.Adapter<UploadAdapter.UploadViewHolder>() {
-
     override fun onBindViewHolder(viewholder: UploadViewHolder, position: Int) {
         val binding = (viewholder as UploadViewHolder).binding
         val uploadData = uploadList.get(position)

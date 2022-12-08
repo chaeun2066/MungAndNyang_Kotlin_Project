@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mungandnyang.databinding.AlluserItemBinding
 
 class UserAdapter(val context: Context, val userList:MutableList<User>):RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         val binding = AlluserItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val userViewHolder = UserViewHolder(binding)

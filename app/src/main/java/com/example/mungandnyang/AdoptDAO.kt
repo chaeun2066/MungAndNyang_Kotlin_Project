@@ -30,10 +30,6 @@ class AdoptDAO {
         return photoDbReference!!.push().setValue(photoVO)
     }
 
-    fun insertReview(uploadVO: UploadVO): Task<Void>{
-        return reviewDbReference!!.push().setValue(uploadVO)
-    }
-
     fun selectReview(): Query? {
         return reviewDbReference
     }

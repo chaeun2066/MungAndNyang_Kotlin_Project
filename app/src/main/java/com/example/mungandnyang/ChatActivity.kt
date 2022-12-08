@@ -60,7 +60,6 @@ class ChatActivity : AppCompatActivity() {
                     database.child("chats").child(receiverRoom).child("messages").push()
                         .setValue(messageObject)
                 }
-
             binding.edtMessage.setText("")
         }
 
@@ -76,9 +75,7 @@ class ChatActivity : AppCompatActivity() {
                     }
                     messageAdapter.notifyDataSetChanged()
                 }
-
                 override fun onCancelled(error: DatabaseError) {
-
                 }
             })
     }

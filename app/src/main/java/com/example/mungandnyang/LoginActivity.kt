@@ -199,6 +199,4 @@ class LoginActivity : AppCompatActivity() {
             finish() //액티비티 종료
         }
     }
-
-
 }

@@ -86,7 +86,6 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     }
 
     override fun onConnected(p0: Bundle?) {
-
     }
 
     override fun onConnectionSuspended(data: Int) {
