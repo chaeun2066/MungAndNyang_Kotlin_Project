@@ -33,6 +33,7 @@ class ReviewUploadActivity : AppCompatActivity() {
         binding = ActivityReviewUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //** ReviewUploadActivity 실행 시 바로 갤러리 오픈 **//
         val requestLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
             if(it.resultCode == Activity.RESULT_OK){
                 Glide.with(applicationContext).load(it.data?.data).centerCrop().into(binding.ivRevupPicture)
@@ -55,7 +56,6 @@ class ReviewUploadActivity : AppCompatActivity() {
 
             val eventHandler = object: DialogInterface.OnClickListener{
                 override fun onClick(dialog: DialogInterface?, position: Int) {
-                    TODO("Not yet implemented")
                 }
             }
 
@@ -100,6 +100,7 @@ class ReviewUploadActivity : AppCompatActivity() {
             }, now().year, now().month.value, now().dayOfMonth).show()
         }
 
+        //등록 버튼
         binding.btnRevupReg.setOnClickListener {
             if(binding.ivRevupPicture.drawable != null && binding.tvRevupDate.text.isNotEmpty()){
                 val adoptDAO = AdoptDAO()
@@ -111,8 +112,10 @@ class ReviewUploadActivity : AppCompatActivity() {
                 val text = binding.tvRevupText.text.toString()
                 val age = binding.tvRevupAge.text.toString()
                 val uploadData = UploadVO(docId, uId, name, gender, breed, date, text, age)
+                //storage에 이미지 등록
                 val uploadImg = adoptDAO.storage!!.reference.child("images/${uploadData.docId}.jpg")
                 uploadImg.putFile(imageUri!!)?.addOnSuccessListener{
+                    // ** 후기 게시글 Firebase 등록 DAO ** //
                     adoptDAO.reviewDbReference?.child(docId!!)?.setValue(uploadData)?.addOnSuccessListener {
                         Log.d("mungandnyang","데이터 전송 성공")
                         Toast.makeText(this, "저장되었습니다.", Toast.LENGTH_SHORT).show()

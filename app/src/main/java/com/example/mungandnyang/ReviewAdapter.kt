@@ -11,8 +11,8 @@ import com.example.mungandnyang.databinding.ReviewItemBinding
 
 
 class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>): RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
-    override fun onBindViewHolder(wifiViewholder: ReviewViewHolder, position: Int) {
-        val binding = (wifiViewholder as ReviewViewHolder).binding
+    override fun onBindViewHolder(reviewViewholder: ReviewViewHolder, position: Int) {
+        val binding = (reviewViewholder as ReviewViewHolder).binding
         val reviewData = reviewList.get(position)
 
         binding.tvRevTitle.isSelected = true
@@ -20,7 +20,6 @@ class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>)
         binding.tvRevDate.text = reviewData.date
         binding.ivRevPicture.setImageResource(reviewData.image)
         binding.revLinearLayout.setOnClickListener {
-            binding.revLinearLayout.resources.getColor(R.color.iphone_blue)
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW
             intent.data = Uri.parse(reviewData.url)

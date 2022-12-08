@@ -111,6 +111,7 @@ class ReviewFragment : Fragment() {
         binding.userRecyclerView.adapter = uploadAdapter
         getUploadList()
 
+        // 플로팅 버튼
         binding.fab.setOnClickListener {
             if(isOpened){
                 floatingOpen()
@@ -152,14 +153,17 @@ class ReviewFragment : Fragment() {
         val adoptDAO = AdoptDAO()
         adoptDAO.selectReview()?.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                // 리뷰 리스트를 초기화 시키고
                 uploadList.clear()
                 for(dataSnapshot in snapshot.children){
                     var uploadData = dataSnapshot.getValue(UploadVO::class.java)
                     uploadData?.docId = dataSnapshot.key.toString()
                     if(uploadData != null){
+                        // 추가된 게시글까지 List에 삽입해서
                         uploadList.add(uploadData)
                     }
-                }//end of for
+                }
+                // 변경사항 알리기 어댑터 새로고침
                 uploadAdapter.notifyDataSetChanged()
                 Log.d("mungandnyang", "onDataChange" )
             }
