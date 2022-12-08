@@ -23,6 +23,7 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
     }
 
     override fun onBindViewHolder(holder: AdoptViewHolder, position: Int) {
+        // 동시에 boolean 값과 현재 list의 Position 값 삽입할 수 있는 Array (단점: Data의 양이 많을수록 속도 저하)
         var selectedItems: SparseBooleanArray = SparseBooleanArray()
         val binding = (holder as AdoptViewHolder).binding
         val adoptAnimal = adoptList[position]
@@ -80,11 +81,14 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
         }
 
         binding.root.setOnClickListener {
-            if (selectedItems[position]) {
+            //내가 선택한 ItemView의 position + boolean (default : Fasle)
+            if (selectedItems[position]) { // selectedItems.get(position, false)
+                //해당 ItemView를 삭제(= true가 아닌 것), delete = put(position, false)
                 selectedItems.delete(position)
                 binding.infoLayout.visibility = View.VISIBLE
                 binding.detailLayout.visibility = View.GONE
             } else {
+                //boolean 값이 true라면 Detail Layout이 확장
                 selectedItems.put(position, true)
                 binding.infoLayout.visibility = View.GONE
                 binding.detailLayout.visibility = View.VISIBLE

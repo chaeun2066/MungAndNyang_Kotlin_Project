@@ -15,7 +15,6 @@ class UploadAdapter(val context: Context, val uploadList: MutableList<UploadVO>)
     override fun onBindViewHolder(viewholder: UploadViewHolder, position: Int) {
         val binding = (viewholder as UploadViewHolder).binding
         val uploadData = uploadList.get(position)
-        val userAuth = Firebase.auth
 
         binding.tvRevTitle.text = uploadData.name
         binding.tvRevDate.text = uploadData.date

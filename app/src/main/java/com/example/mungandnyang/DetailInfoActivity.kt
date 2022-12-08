@@ -19,9 +19,11 @@ class DetailInfoActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance().reference
 
         val adoptDAO = AdoptDAO()
+        //Storage에 있는 이미지를 imgRef에 삽입
         val imgRef = adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg")
+        //해당 이미지를 Url로 다운받기
         imgRef.downloadUrl.addOnCompleteListener {
-            if(it.isSuccessful){
+            if(it.isSuccessful){ /*** 제외하고 실행시켜보기 ***/
                 Glide.with(applicationContext).load(it.result).centerCrop().into(binding.ivDeinfoPicture)
             }
         }
@@ -32,6 +34,7 @@ class DetailInfoActivity : AppCompatActivity() {
             binding.ivDeinfoGender.setImageResource(R.drawable.male)
         }
 
+        //** 해당 게시글을 작성한 유저의 Uid 값을 가진 Email 값을 적용 DAO **//
         database.child("user").child("${intent.getStringExtra("uId")}")
             .child("email").addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
