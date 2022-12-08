@@ -41,12 +41,15 @@ class LoginActivity : AppCompatActivity() {
         }
 
         //mySharedPreferences 파일에 ID와 PW값을 가져왔을 때 Null 또는 공백이라면 '일반 로그인' 진행
+        //SharedPreferences에서 가져올 아이디와 패스워드가 null or blank라면 일반 로그인
         if(mySharedPreferences.getUserId(this).isNullOrBlank()
             || mySharedPreferences.getUserPass(this).isNullOrBlank()) {
             binding.btnLALogin.setOnClickListener {
                 loginPattern()
             }
         } else { // SharedPreferences 안에 값이 저장되어 있을 때 '자동 로그인' 진행
+            // 가져올 아이디와 패스워드가 있다면 해당 아이디와 패스워드를
+            // 이메일과 패스워드 입력칸에 설정해놓고 이 데이터를 읽고 firebase 로그인 인증이 성공하면 메인 액티비티로 전환
             binding.ivAutologin.setImageResource(R.drawable.ic_check_box_24)
             //shared 에서 가져온 Email과 Password를 자동으로 입력
             binding.edtLAEmail.setText(mySharedPreferences.getUserId(binding.root.context))
@@ -69,16 +72,18 @@ class LoginActivity : AppCompatActivity() {
                 0 -> binding.ivAutologin.setImageResource(R.drawable.ic_check_box_blank_24)
                 1 -> binding.ivAutologin.setImageResource(R.drawable.ic_check_box_24)
             }
-            if (checkid == 0) {
+            if (checkid == 0) { // 자동로그인 체크를 하지 않았을 경우
                 binding.ivAutologin.setImageResource(R.drawable.ic_check_box_blank_24)
                 checkid = 1
+
                 // 체크 해제 시 '일반 로그인'
                 binding.btnLALogin.setOnClickListener {
                     loginPattern()
                 }
-            }else{
+            }else{ // 자동로그인 체크를 하였을 경우
                 binding.ivAutologin.setImageResource(R.drawable.ic_check_box_24)
                 checkid = 0
+
                 // 체크 시 '자동 로그인'
                 binding.btnLALogin.setOnClickListener {
                     autoLoginPattern()
@@ -89,7 +94,7 @@ class LoginActivity : AppCompatActivity() {
 
     //일반 로그인
     private fun login(email: String, password: String) {
-        userAuth.signInWithEmailAndPassword(email, password)
+        userAuth.signInWithEmailAndPassword(email, password) // firebase Authentication의 로그인 기능 사용
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val intent = Intent(this, MainActivity::class.java)
@@ -109,8 +114,8 @@ class LoginActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         // 사용자의 Email과 Password를 shared에 저장
-                        mySharedPreferences.setUserId(this, email)
-                        mySharedPreferences.setUserPass(this, password)
+                        mySharedPreferences.setUserId(this, email) //SharedPReferences에 Id 저장
+                        mySharedPreferences.setUserPass(this, password) //SharedPReferences에 password 저장
                         Toast.makeText(
                             this,
                             "${mySharedPreferences.getUserId(this)}님 멍앤냥에 오신걸 환영합니다!",
@@ -127,11 +132,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginPattern(){
+        //Pattern.compile()은 주어진() 정규표현식으로부터 패턴을 만들어주는 메소드
         val passwordRegex =
             Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{0,15}$")
         val emailRegex =
             Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
+
         // 화면에 나오는 소프트 키보드 제어 객체
+        //객체 생성이 불가하여 getSystemService 메소드로 가져와야함
         var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         val password = binding.edtLAPassword.text.toString()
         val email = binding.edtLAEmail.text.toString()
@@ -184,12 +192,14 @@ class LoginActivity : AppCompatActivity() {
                 InputMethodManager.SHOW_IMPLICIT
             )
             Toast.makeText(this, "비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show()
-        } else if (!emailRegex.matcher(email).matches()) {
+        } else if (!emailRegex.matcher(email).matches()) { // emailRegex와 .match()에서 ()에 문자열이 일치하면 true 반환
             binding.edtLAEmail.requestFocus()
             manager.showSoftInput(binding.edtLAEmail, InputMethodManager.SHOW_IMPLICIT)
             Toast.makeText(this, "올바르지 않은 이메일 형식입니다.", Toast.LENGTH_SHORT).show()
         } else if (!passwordRegex.matcher(password).matches()) {
+            //edtLAPassword에 포커스를 준다
             binding.edtLAPassword.requestFocus()
+            //edtLAPassword를 화면에 보여주는 기능
             manager.showSoftInput(
                 binding.edtLAPassword,
                 InputMethodManager.SHOW_IMPLICIT

@@ -113,6 +113,7 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
         googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
     }
 
+
     override fun onBackPressed() {
         super.onBackPressed()
         val intent = Intent(this, AdoptguideActivity::class.java)
