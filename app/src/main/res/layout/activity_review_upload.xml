@@ -76,7 +76,7 @@
 
                     <EditText
                         android:id="@+id/tv_revup_name"
-                        android:layout_width="wrap_content"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:textSize="17sp"
                         android:hint="이름"
@@ -110,11 +110,20 @@
 
                 <EditText
                     android:id="@+id/tv_revup_age"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
                     android:hint="나이"
                     android:background="@android:color/transparent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="세"
+                    android:textColor="@color/font_brown"
+                    android:textSize="17sp"/>
 
             </LinearLayout>
 
@@ -135,7 +144,7 @@
 
                 <EditText
                     android:id="@+id/tv_revup_kind"
-                    android:layout_width="wrap_content"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
                     android:hint="종"
