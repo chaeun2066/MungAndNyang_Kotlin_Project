@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(intent)
                     Toast.makeText(applicationContext, "로그아웃 하셨습니다", Toast.LENGTH_SHORT).show()
-
+                    finish()
                 }
             }
         }
