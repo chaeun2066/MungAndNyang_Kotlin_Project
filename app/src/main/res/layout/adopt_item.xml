@@ -52,7 +52,7 @@
                         android:layout_gravity="center"
                         android:text="이름 "
                         android:textStyle="bold"
-                        android:textColor="#3C3C3C"
+                        android:textColor="@color/font_brown"
                         android:textSize="18sp" />
 
                     <ImageView
@@ -324,7 +324,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginBottom="30dp"
                         android:gravity="center"
                         android:orientation="horizontal">

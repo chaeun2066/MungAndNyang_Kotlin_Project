@@ -191,14 +191,14 @@
 
     <Button
         android:id="@+id/btn_call"
-        android:layout_width="130dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
         android:layout_gravity="center"
         android:text="입양 전화문의"
         android:background="@drawable/button_background"
         android:textSize="20sp"
-        android:textColor="#5E9125"
+        android:textColor="@color/white"
         android:textStyle="bold"/>
 
 
