@@ -36,5 +36,4 @@ class MySharedPreferences {
         editor.clear()
         editor.commit()
     }
-
 }

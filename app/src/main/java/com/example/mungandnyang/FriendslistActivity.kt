@@ -47,9 +47,7 @@ class FriendslistActivity : AppCompatActivity() {
                 }
                 adapter.notifyDataSetChanged()
             }
-
             override fun onCancelled(error: DatabaseError) {
-
             }
         })
     }

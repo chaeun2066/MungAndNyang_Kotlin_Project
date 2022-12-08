@@ -61,7 +61,7 @@ class AdoptlistFragment : Fragment() {
                     data?.let {
                         for(adopt in it.TbAdpWaitAnimalView.row){
                             val adoptDAO = AdoptDAO()
-                            Log.d("com.example.mungnyang", "Data Load Success")
+                            Log.d("mungnandyang", "Data Load Success")
                             var number = adopt.ANIMAL_NO
                             var state = adopt.ADP_STTUS
                             var name = adopt.NM
@@ -83,12 +83,10 @@ class AdoptlistFragment : Fragment() {
                                             Log.d("com.example.mungnyang" , "${number} ${name} ${breed} 실패")
                                         }
                                     }else{
-                                        Log.d("com.example.mungandnyang", " 성 공 ")
+                                        Log.d("mungandnyang", " 성 공 ")
                                     }
                                 }
-
                                 override fun onCancelled(error: DatabaseError) {
-
                                 }
                             })
                         }
@@ -128,12 +126,10 @@ class AdoptlistFragment : Fragment() {
                                                 Log.d("com.example.mungnyang", "${ani_number} ${photo_url} ${photo_kind} 실패")
                                             }
                                         }else{
-                                            Log.d("com.example.mungandnyang", " 성 공 2")
+                                            Log.d("mungandnyang", " 성 공 2")
                                         }
                                     }
-
                                     override fun onCancelled(error: DatabaseError) {
-
                                     }
                                 })
                             }

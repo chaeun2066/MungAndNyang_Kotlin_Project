@@ -11,13 +11,11 @@ import com.example.mungandnyang.databinding.ReviewItemBinding
 
 
 class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>): RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
-
     override fun onBindViewHolder(wifiViewholder: ReviewViewHolder, position: Int) {
         val binding = (wifiViewholder as ReviewViewHolder).binding
         val reviewData = reviewList.get(position)
 
         binding.tvRevTitle.isSelected = true
-
         binding.tvRevTitle.text = reviewData.title
         binding.tvRevDate.text = reviewData.date
         binding.ivRevPicture.setImageResource(reviewData.image)

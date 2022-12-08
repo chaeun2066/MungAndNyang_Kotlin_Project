@@ -50,7 +50,6 @@ class MessageAdapter(val context: Context, val messageList: MutableList<Message>
         }
     }
 
-//    class UserViewHolder(val binding: AlluserItemBinding):RecyclerView.ViewHolder(binding.root)
     class SendViewHolder(val binding: ChatSendBinding): RecyclerView.ViewHolder(binding.root)
     class ReceiveViewHolder(val binding: ChatReceiveBinding): RecyclerView.ViewHolder(binding.root)
 }
