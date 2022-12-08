@@ -24,14 +24,17 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
 
     override fun onBindViewHolder(holder: AdoptViewHolder, position: Int) {
         // 동시에 boolean 값과 현재 list의 Position 값 삽입할 수 있는 Array (단점: Data의 양이 많을수록 속도 저하)
+        // SparseBooleanArray : Int 정수에 Boolean 값을 Mapping 하는 것 ex) Map(int key, boolean value)
         var selectedItems: SparseBooleanArray = SparseBooleanArray()
         val binding = (holder as AdoptViewHolder).binding
         val adoptAnimal = adoptList[position]
         animalDatabase = Firebase.database.reference
+        //Database의 AdoptPhoto라는 자식 객체 접근
         animalDatabase.child("AdoptPhoto").addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(postSnapshot in snapshot.children){
                     val currentAnimal = postSnapshot.getValue(PhotoVO::class.java)
+                    // 현재 Adoptphoto에 있는 동물 사진의 동물 번호와 adoptlist에 있는 동물들의 번호가 같을 때 사진을 매칭
                     if(currentAnimal!!.ani_number == adoptAnimal.number){
                         Glide.with(context.applicationContext).load("https://${currentAnimal!!.photo_url}").into(binding.ivThumb)
                         Glide.with(context.applicationContext).load("https://${currentAnimal!!.photo_url}").into(binding.ivDeinfoPicture)
@@ -81,9 +84,9 @@ class AdoptAdapter(val context: Context, val adoptList: MutableList<AnimalVO>):R
         }
 
         binding.root.setOnClickListener {
-            //내가 선택한 ItemView의 position + boolean (default : Fasle)
+            //내가 선택한 ItemView의 position(Int) + boolean (default : Fasle)
             if (selectedItems[position]) { // selectedItems.get(position, false)
-                //해당 ItemView를 삭제(= true가 아닌 것), delete = put(position, false)
+                //해당 ItemView를 삭제, delete = put(position, false)
                 selectedItems.delete(position)
                 binding.infoLayout.visibility = View.VISIBLE
                 binding.detailLayout.visibility = View.GONE

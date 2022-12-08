@@ -36,12 +36,12 @@ class FriendslistActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        //사용자 정보 가져오기
+        //사용자 정보 가져오기 - Database의 user의 자식 객체의 값들을 가져온다.
         database.child("user").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for(postSnapshot in snapshot.children){
                     val currentUser = postSnapshot.getValue(User::class.java)
-                    //나를 제외한 모든 유저의 리스트
+                    //나를 제외한 모든 유저의 리스트 (현재 접속한 사용자의 UID와 회원 리스트의 유저의 UID 비교)
                     if(userAuth.currentUser?.uid != currentUser?.uId){
                         userList.add(currentUser!!)
                     }

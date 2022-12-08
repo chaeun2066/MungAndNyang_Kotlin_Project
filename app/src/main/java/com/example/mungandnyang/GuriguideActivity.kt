@@ -38,7 +38,9 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
         binding = ActivityGuriguideBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val requestPermissionLauncher = registerForActivityResult(
+            //여러 개의 퍼미션 요청할 때
             ActivityResultContracts.RequestMultiplePermissions()){
+            //모든 퍼미션들의 값이 true면, 현재 사용자와 연결
             if(it.all { permission -> permission.value == true }){
                 apiClient?.connect()
             }else{
@@ -47,6 +49,7 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
             }
         }
 
+        //비동기적 방식으로 구글 맵 실행
         (supportFragmentManager.findFragmentById(R.id.guriMapView) as SupportMapFragment?)?.getMapAsync(this)
 
         if(
@@ -101,7 +104,6 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
     override fun onMapReady(googleMap: GoogleMap) {
         val center = LatLng(LATITUDE, LONGTITUDE)
         googleMap.addMarker(MarkerOptions().position(center).title(ADOPTNAME))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
 
         val cameraPosition = CameraPosition.Builder()
             .target(center)

@@ -111,7 +111,7 @@ class ReviewFragment : Fragment() {
         binding.userRecyclerView.adapter = uploadAdapter
         getUploadList()
 
-        // 플로팅 버튼
+        // 플로팅 버튼 OPEN / CLOSE
         binding.fab.setOnClickListener {
             if(isOpened){
                 floatingOpen()
@@ -159,11 +159,11 @@ class ReviewFragment : Fragment() {
                     var uploadData = dataSnapshot.getValue(UploadVO::class.java)
                     uploadData?.docId = dataSnapshot.key.toString()
                     if(uploadData != null){
-                        // 추가된 게시글까지 List에 삽입해서
+                        // 추가된 게시글까지 List에 삽입
                         uploadList.add(uploadData)
                     }
                 }
-                // 변경사항 알리기 어댑터 새로고침
+                // 어댑터 새로고침
                 uploadAdapter.notifyDataSetChanged()
                 Log.d("mungandnyang", "onDataChange" )
             }

@@ -26,6 +26,7 @@ class UserAdapter(val context: Context, val userList:MutableList<User>):Recycler
 
         binding.root.setOnClickListener{
             val intent = Intent(context, ChatActivity::class.java)
+            // 현재 선택한 유저의 name과 uId 값을 넘김
             intent.putExtra("name", user.name)
             intent.putExtra("uId", user.uId)
 

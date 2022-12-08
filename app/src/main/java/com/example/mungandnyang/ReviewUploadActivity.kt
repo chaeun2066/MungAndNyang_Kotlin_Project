@@ -27,7 +27,7 @@ class ReviewUploadActivity : AppCompatActivity() {
     var gender: String = ""
     val userAuth = Firebase.auth
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @RequiresApi(Build.VERSION_CODES.O) //DatePicker 때 사용
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityReviewUploadBinding.inflate(layoutInflater)
@@ -105,7 +105,7 @@ class ReviewUploadActivity : AppCompatActivity() {
             if(binding.ivRevupPicture.drawable != null && binding.tvRevupDate.text.isNotEmpty()){
                 val adoptDAO = AdoptDAO()
                 val docId = adoptDAO.reviewDbReference?.push()?.key
-                val uId = userAuth.currentUser?.uid.toString()
+                val uId = userAuth.currentUser?.uid.toString() // 게시글 작성한 사람의 uid 값
                 val name = binding.tvRevupName.text.toString()
                 val breed = binding.tvRevupKind.text.toString()
                 val date = binding.tvRevupDate.text.toString()

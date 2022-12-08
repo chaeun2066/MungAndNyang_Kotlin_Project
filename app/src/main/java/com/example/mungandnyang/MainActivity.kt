@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //구글 인증 사용자
         userAuth = Firebase.auth
 
         //Toolbar 설정
@@ -43,11 +44,13 @@ class MainActivity : AppCompatActivity() {
         adoptlistFragment = AdoptlistFragment()
         reviewFragment = ReviewFragment()
 
+        //Fragment와 TabTitle
         pagerAdapter.addFragment(adoptlistFragment, title[0])
         pagerAdapter.addFragment(reviewFragment, title[1])
 
         binding.mainViewPager2.adapter = pagerAdapter
 
+        //Fragment와 Tablayout 서로 부착
         TabLayoutMediator(binding.mainTabLayout, binding.mainViewPager2){ tab, position ->
             tab.setCustomView(createTabView(title[position]))
         }.attach()
@@ -78,11 +81,14 @@ class MainActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
 
+    //로그아웃 버튼 눌렀을 때, 다이얼로그 발생
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val eventHandler = object : DialogInterface.OnClickListener{
             override fun onClick(userDialog: DialogInterface?, p1: Int) {
                 if(p1 == DialogInterface.BUTTON_POSITIVE){
+                    //계정 로그아웃
                     userAuth.signOut()
+                    //shared 파일 초기화
                     mySharedPreferences.clearUser(this@MainActivity)
                     val intent = Intent(applicationContext, LoginActivity::class.java)
                     startActivity(intent)
@@ -107,12 +113,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        // 뒤로가기 버튼 클릭
+        // 뒤로가기 버튼 클릭 - 2초 이내 클릭한다면, 종료
         if(System.currentTimeMillis() - mBackWait >=2000 ) {
             mBackWait = System.currentTimeMillis()
             Snackbar.make(binding.root,"뒤로가기 버튼을 한번 더 누르면 종료됩니다.", Snackbar.LENGTH_LONG).show()
         } else {
-            finish() //액티비티 종료
+            finish()
         }
     }
 }

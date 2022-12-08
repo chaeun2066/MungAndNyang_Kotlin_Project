@@ -19,6 +19,7 @@ class ReviewAdapter(val context: Context, val reviewList: MutableList<ReviewVO>)
         binding.tvRevTitle.text = reviewData.title
         binding.tvRevDate.text = reviewData.date
         binding.ivRevPicture.setImageResource(reviewData.image)
+        // 리뷰 itemview 선택 시 intent 이동
         binding.revLinearLayout.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_VIEW

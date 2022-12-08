@@ -74,6 +74,7 @@ class AdoptlistFragment : Fragment() {
                             val animalVO = AnimalVO(number, state, name, age, gender, weight, breed, date, type)
                             adoptList.add(animalVO)
 
+                            //Database에 "AdoptList"라는 자식 객체의 값들을 불러온 후 snapshot 값이 없을 때만, Database에 삽입
                             adoptDatabase.child("AdoptList").addListenerForSingleValueEvent(object : ValueEventListener{
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     if(!snapshot.exists()){
@@ -117,6 +118,7 @@ class AdoptlistFragment : Fragment() {
                             if(photo_kind.equals("THUMB")) {
                                 val photoVO = PhotoVO(ani_number, photo_url, photo_kind)
 
+                                //Database에 "AdoptPhoto"라는 자식 객체의 값들을 불러온 후 snapshot 값이 없을 때만, Database에 삽입
                                 adoptDatabase.child("AdoptPhoto").addListenerForSingleValueEvent(object : ValueEventListener{
                                     override fun onDataChange(snapshot: DataSnapshot) {
                                         if(!snapshot.exists()){
