@@ -23,7 +23,7 @@ class DetailInfoActivity : AppCompatActivity() {
         val imgRef = adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg")
         //해당 이미지를 Url로 다운받기
         imgRef.downloadUrl.addOnCompleteListener {
-            if(it.isSuccessful){ /*** 제외하고 실행시켜보기 ***/
+            if(it.isSuccessful){
                 Glide.with(applicationContext).load(it.result).centerCrop().into(binding.ivDeinfoPicture)
             }
         }
@@ -34,6 +34,7 @@ class DetailInfoActivity : AppCompatActivity() {
             binding.ivDeinfoGender.setImageResource(R.drawable.male)
         }
 
+        // ReviewUploadActivity에서 후기를 작성한 유저의 UID 값을 업로드할 때 저장 //
         //** 해당 게시글을 작성한 유저의 Uid 값을 가진 Email 값을 적용 DAO **//
         database.child("user").child("${intent.getStringExtra("uId")}")
             .child("email").addValueEventListener(object : ValueEventListener{

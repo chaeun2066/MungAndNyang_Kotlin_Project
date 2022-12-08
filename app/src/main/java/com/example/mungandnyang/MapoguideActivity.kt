@@ -38,7 +38,9 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
         setContentView(binding.root)
 
         val requestPermissionLauncher = registerForActivityResult(
+            //여러 개의 퍼미션 요청할 때
             ActivityResultContracts.RequestMultiplePermissions()){
+            //모든 퍼미션들의 값이 true면, 현재 사용자와 연결
             if(it.all { permission -> permission.value == true }){
                 apiClient?.connect()
             }else{
@@ -46,6 +48,8 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
                 finish()
             }
         }
+
+        //비동기적 방식으로 구글 맵 실행
         (supportFragmentManager.findFragmentById(R.id.mapoMapView) as SupportMapFragment?)?.getMapAsync(this)
         if(
             ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ||
@@ -99,11 +103,8 @@ class MapoguideActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbac
     override fun onMapReady(googleMap: GoogleMap) {
         val center = LatLng(LATITUDE, LONGTITUDE)
         googleMap.addMarker(MarkerOptions().position(center).title(ADOPTNAME))
-<<<<<<< HEAD
-=======
         // ** 삭제하고 실행해보기 **//
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
->>>>>>> a852ba3554b3281be36406744641d6809fa2fb24
 
         val cameraPosition = CameraPosition.Builder()
             .target(center)

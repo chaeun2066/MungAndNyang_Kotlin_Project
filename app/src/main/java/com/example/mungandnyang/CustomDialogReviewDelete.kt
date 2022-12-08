@@ -29,9 +29,9 @@ class CustomDialogReviewDelete(val context: Context, val reviewItemBinding: Revi
             //관리자 비밀번호 점검
             if(binding.edtPassword.text.toString().equals("1163")){
                 val adoptDAO = AdoptDAO()
-                //Storage 이미지 삭제
+                //해당 게시글 UID를 가진 Storage 이미지 삭제
                 adoptDAO.storage!!.reference.child("images/${intent.getStringExtra("docId")}.jpg").delete()
-                //Firebase 후기 내용 삭제
+                //해당 게시글 UID를 가진 Firebase 후기 내용 삭제
                 adoptDAO.deleteReview(intent.getStringExtra("docId")!!).addOnSuccessListener {
                     Toast.makeText(binding.root.context, "삭제 성공", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()

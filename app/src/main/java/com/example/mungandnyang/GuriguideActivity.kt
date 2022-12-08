@@ -39,6 +39,7 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
         setContentView(binding.root)
         // 권한허용 콜백 함수
         val requestPermissionLauncher = registerForActivityResult(
+            //여러 개의 퍼미션 요청할 때
             ActivityResultContracts.RequestMultiplePermissions()){
             //이 권한들 값이 true가 된다면 사용자에게 연결
             if(it.all { permission -> permission.value == true }){
@@ -49,6 +50,7 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
             }
         }
 
+        //비동기적 방식으로 구글 맵 실행
         //지도가 정보가 올 경우에 어떤 Fragment에 이 지도 정보를 보여줄 지를 자동연결 시켜줌
         //바인딩으로 찾으면 안되고 R.id로 찾을 것, SupportMapFragment로 형변환해서 지원맵은 이 액티비티라고 연결 시켜줌
         (supportFragmentManager.findFragmentById(R.id.guriMapView) as SupportMapFragment?)?.getMapAsync(this)
@@ -106,7 +108,6 @@ class GuriguideActivity : AppCompatActivity() , GoogleApiClient.ConnectionCallba
         val center = LatLng(LATITUDE, LONGTITUDE) // LatLng 하나의 위경도 좌표를 나타내는 것
         // 구글맵에 center 위치에 구글에서 지원하는 아이콘으로 마커를 표시하고, 상수로 정한 AOPTNAME을 타이틀로 하겠다
         googleMap.addMarker(MarkerOptions().position(center).title(ADOPTNAME))
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(center))
 
         //카메라위치 설정
         val cameraPosition = CameraPosition.Builder()

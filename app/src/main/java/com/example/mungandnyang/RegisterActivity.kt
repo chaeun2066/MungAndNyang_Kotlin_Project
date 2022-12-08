@@ -28,7 +28,6 @@ class RegisterActivity : AppCompatActivity() {
 
         //인증 초기화
         userAuth = Firebase.auth
-
         //데이터 베이스 초기화
         userDatabase = Firebase.database.reference
 
@@ -44,6 +43,7 @@ class RegisterActivity : AppCompatActivity() {
 
         //버튼 회원가입 이벤트
         binding.btnRARegister.setOnClickListener {
+            // 화면에 나오는 소프트 키보드 제어 객체
             var manager = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             val passwordRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@$!%*#?&.])[A-Za-z[0-9]@$!%*#?&.]{0,15}$")
             val emailRegex = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[@.])[A-Za-z[0-9]@.]{8,30}$")
@@ -55,6 +55,7 @@ class RegisterActivity : AppCompatActivity() {
 
             if (email.isEmpty() || !emailRegex.matcher(email).matches()){
                 binding.edtRAEmail.requestFocus()
+                // 입력 표현식이 틀렸을 시, 자동으로 틀린 부분을 보여지게하는
                 manager.showSoftInput(binding.edtRAEmail, InputMethodManager.SHOW_IMPLICIT)
                 Toast.makeText(this, "올바른 이메일 형식으로 입력해주세요.", Toast.LENGTH_SHORT).show()
             } else if (password.isEmpty() || !passwordRegex.matcher(password).matches()){
