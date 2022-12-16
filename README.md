@@ -12,29 +12,39 @@ Kotlin과 Android Studio를 활용한 Mung&Nyang 제작
 |Language|Kotlin 213-1.7.20|
 |Editor|Android Studio 11.0.13|
 |DB|Firebase(Realtime, Storage)|
-|Github|<a href="https://github.com/chaeun2066/MungNyang"><img src="https://img.shields.io/badge/Github-F05032?style=flat-square&logo=github&logoColor=white"/></a> Move to MungNyang Repository|
+|Team Leader|<a href="https://github.com/chaeun2066"><img src="https://img.shields.io/badge/Github-F05032?style=flat-square&logo=github&logoColor=white"/></a> Move to chaeun2066 Repository|
+|Team Member|<a href="https://github.com/seopit95"><img src="https://img.shields.io/badge/Github-F05032?style=flat-square&logo=github&logoColor=white"/></a> Move to seopit95 Repository|
+|Team Member|<a href="https://github.com/huhxii"><img src="https://img.shields.io/badge/Github-F05032?style=flat-square&logo=github&logoColor=white"/></a> Move to huhxii Repository|
 
 ● Development Period
 ----------------
-2022년 11월 25일(금) ~ 현재 개발 진행 중
+2022년 11월 25일(금) ~ 2022년 12월 9일(금)
 
 
 ● Fucntion Summary and Information
 -------------
 
+
 ● Using
 -------------
-+ Firebase
++ Firebase - Realtime Database, Storage
 + Recycler
 + retrofit2
 + ViewPager
 + Tablayout
 + Splash Screen
-+ Permission(INTERNET)
-+ 
++ Permission
++ SharedPreference
++ Chat
++ Float Button
++ Intent
++ Dialog
++ DatePicker
++ ScrollView
++ Map
 
 ● Version History
 -------------
-> 
+> v0.1 (09/12/2022) - Initial Release
 
 ![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=200&section=footer)
