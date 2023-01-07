@@ -24,7 +24,7 @@ Kotlin과 Android Studio를 활용한 Mung&Nyang 제작
 ● Fucntion Summary and Information
 -------------
 
-[![Video Label](http://img.youtube.com/vi/i8fL6Ss9YTE/![멍앤냥-썸네일-001](https://user-images.githubusercontent.com/114280483/211134772-e9a12554-beb8-49de-a523-d7d9fc0e8433.jpg))](https://youtu.be/i8fL6Ss9YTE)
+[![Video Label](http://img.youtube.com/vi/mbCCKWAb_xA/0.jpg)](https://youtu.be/mbCCKWAb_xA)
 
 
 ● Using
